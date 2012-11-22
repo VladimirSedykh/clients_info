@@ -15,9 +15,10 @@ ActiveRecord::Schema.define(:version => 20121122001632) do
 
   create_table "clients", :force => true do |t|
     t.string   "name"
+    t.string   "description"
     t.boolean  "role"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
 end

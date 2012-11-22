@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
   def index
+    @client = Client.new
     @clients = Client.all
   end
 
