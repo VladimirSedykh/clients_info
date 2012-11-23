@@ -1,19 +1,42 @@
-<%= form_for @client, :html => {:class => "form-horizontal"}  do |c| %>
-  <div class="control-group">
-  <%= c.label "Name:", :class => "control-label", :for => "inputName" %>
+<%= form_for @client, :html => {:class => "form-horizontal well span16"}  do |client| %>
+  <div class="pull-left">
+  <div class="control-group name-group">
+  <%= client.label "Name:", :class => "control-label", :for => "inputName" %>
   <div class="controls">
-    <%= c.text_field :name, :id => "inputName" %>
+    <%= client.text_field :name, :id => "inputName" %>
   </div>
 </div>
 <div class="control-group">
-  <%= c.label "Description:", :class => "control-label", :for => "inputDescription" %>
+  <%= client.label "State:", :class => "control-label", :for => "inputState" %>
   <div class="controls">
-    <%= c.text_area :description, :rows => 5, :id => "inputDescription" %>
+    <%= client.text_field :state, :id => "inputState" %>
   </div>
 </div>
 <div class="control-group">
+  <%= client.label "Address:", :class => "control-label", :for => "inputAddress" %>
   <div class="controls">
-    <%= c.submit :class => "btn btn-primary"%>
+    <%= client.text_area :address, :rows => 3, :id => "inputAddress" %>
+  </div>
+</div>
+<div class="control-group">
+  <%= client.label "Activity:", :class => "control-label", :for => "inputActivity" %>
+  <div class="controls">
+    <%= client.text_field :description, :id => "inputActivity" %>
+  </div>
+</div>
+<div class="control-group">
+  <%= client.label "Description:", :class => "control-label", :for => "inputDescription" %>
+  <div class="controls">
+    <%= client.text_area :description, :rows => 3, :id => "inputDescription" %>
+  </div>
+</div>
+<%= client.hidden_field :role, :value => "konteragent" %>
+</div>
+<%= render "contacts" %>
+
+<div class="control-group unfloated">
+  <div class="controls">
+    <%= client.submit :class => "btn btn-primary btn-large"%>
   </div>
 </div>
 <% end %>

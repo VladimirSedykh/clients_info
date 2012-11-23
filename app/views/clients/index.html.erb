@@ -1,9 +1,16 @@
+<% @client.errors.full_messages.each do |error| %>
+  <p>
+    <%= error %>
+  </p>
+<% end %>
+
+<%= render "form" %>
 <table class="table table-striped">
   <thead>
     <th>Name</th>
     <th>Description</th>
+    <th>Contacts</th>
     <th>Created At</th>
   </thead>
-  <%= render @clients %>
+  <%= render @clients.reverse %>
 </table>
-<%= render "form" %>

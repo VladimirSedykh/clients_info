@@ -3,4 +3,19 @@ $(document).ready(function(){
     $("li").removeClass("active");
     $(this).addClass("active");
   });
+
+  $(".phone").mask("(999) 999-9999");
+
+  $("#new_client").submit(function() {
+    var name = $(this).find("#inputName");
+    if(name.length != 0){
+      if(name.val() == "" || name.val() == null){
+        if (!$(".name-group").hasClass("error")){
+          $(".name-group").addClass("error");
+          $(".name-group").find(".controls").append("<br /><span class='error'>Введите название.</span>");
+        }
+      return false;
+      }
+    }
+  })
 })

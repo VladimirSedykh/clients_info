@@ -1,0 +1,42 @@
+<% @contacts.each_with_index do |contact, index| %>
+  <%= fields_for "contacts[]", contact do |c| %>
+    <div class="pull-left">
+      <div class="control-group">
+        <%= c.label "Name:", :class => "control-label", :for => "inputName#{index}" %>
+        <div class="controls">
+          <%= c.text_area :name, :rows => 2, :id => "inputName#{index}" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= c.label "CellPhone:", :class => "control-label", :for => "inputPhone#{index}" %>
+        <div class="controls">
+          <%= c.text_field :cellphone, :id => "inputPhone#{index}", :class => "phone" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= c.label "Phone:", :class => "control-label", :for => "inputPhone#{index}" %>
+        <div class="controls">
+          <%= c.text_field :phone, :id => "inputPhone#{index}", :class => "phone" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= c.label "Email:", :class => "control-label", :for => "inputEmail#{index}" %>
+        <div class="controls">
+          <%= c.text_field :email, :id => "inputEmail#{index}" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= c.label "ICQ:", :class => "control-label", :for => "inputIcq#{index}" %>
+        <div class="controls">
+          <%= c.text_field :icq, :id => "inputIcq#{index}" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= c.label "Skype:", :class => "control-label", :for => "inputSkype#{index}" %>
+        <div class="controls">
+          <%= c.text_field :skype, :id => "inputSkype#{index}" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

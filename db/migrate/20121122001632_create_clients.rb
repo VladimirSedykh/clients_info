@@ -2,8 +2,12 @@ class CreateClients < ActiveRecord::Migration
   def up
     create_table :clients do |t|
       t.string :name
+      t.string :address
+      t.string :state
+      t.integer :activity
       t.string :description
-      t.boolean :role
+      t.string :short_contacts
+      t.string :role
       t.timestamps
     end
   end
