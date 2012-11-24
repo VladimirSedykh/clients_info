@@ -1,0 +1,23 @@
+<h2><%= @client.name %></h2>
+<p> Адрес: <%= @client.address %> </p>
+<p> Область: <%= @client.state %> </p>
+<p> Вид Деятельности: <%= @client.activity %> </p>
+<p> Описание: <%= @client.description%> </p>
+<p> Дата создания: <%= @client.created_at.strftime("%m/%d/%Y %H:%M:%S")%> </p>
+<p> Дата последнего редактирования: <%= @client.updated_at.strftime("%m/%d/%Y %H:%M:%S")%> </p>
+
+<%= link_to "Удалить", client_path(@client), :method => :delete , :confirm => "Вы уверены?"%>
+<%= link_to "Редактировать", edit_client_path(@client) %>
+
+<h3>Contacts:</h3>
+<table class="table table-striped">
+  <thead>
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Cellphone</th>
+    <th>Email</th>
+    <th>Icq</th>
+    <th>Skype</th>
+  </thead>
+  <%= render @client.contacts %>
+</table>

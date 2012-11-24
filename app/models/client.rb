@@ -1,7 +1,13 @@
+#!/bin/env ruby
+# encoding: utf-8
 class Client < ActiveRecord::Base
   attr_accessible :name, :description, :address, :activity, :role, :created_at, :updated_at, :state, :short_contacts
-  has_many :contacts
+  has_many :contacts, :dependent => :destroy
   validates_presence_of :name
+
+  GROUPS = { "client" => "Клиенты", "provider" => "Поставщики", "partner" => "Партнеры" }
+
+  scope :by_group, lambda {|group| where(:role => group)}
 
   def contacts_for_update
     contact = contacts.first

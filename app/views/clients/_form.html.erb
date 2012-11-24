@@ -1,4 +1,4 @@
-<%= form_for @client, :html => {:class => "form-horizontal well span16"}  do |client| %>
+<%= form_for @client, :html => {:class => "client_edit_form form-horizontal well span16"}  do |client| %>
   <div class="pull-left">
   <div class="control-group name-group">
   <%= client.label "Name:", :class => "control-label", :for => "inputName" %>
@@ -21,7 +21,7 @@
 <div class="control-group">
   <%= client.label "Activity:", :class => "control-label", :for => "inputActivity" %>
   <div class="controls">
-    <%= client.text_field :description, :id => "inputActivity" %>
+    <%= client.text_field :activity, :id => "inputActivity" %>
   </div>
 </div>
 <div class="control-group">
@@ -30,9 +30,12 @@
     <%= client.text_area :description, :rows => 3, :id => "inputDescription" %>
   </div>
 </div>
-<%= client.hidden_field :role, :value => "konteragent" %>
 </div>
-<%= render "contacts" %>
+
+<% unless params[:action] == "edit" %>
+  <%= client.hidden_field :role, :value => current_group %>
+  <%= render "contacts" %>
+<% end %>
 
 <div class="control-group unfloated">
   <div class="controls">

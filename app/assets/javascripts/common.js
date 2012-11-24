@@ -6,7 +6,7 @@ $(document).ready(function(){
 
   $(".phone").mask("(999) 999-9999");
 
-  $("#new_client").submit(function() {
+  $(".client_edit_form").submit(function() {
     var name = $(this).find("#inputName");
     if(name.length != 0){
       if(name.val() == "" || name.val() == null){

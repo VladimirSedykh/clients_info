@@ -20,3 +20,8 @@
 .name-group {
   position: relative;
 }
+
+.brand {
+  text-align: right;
+  width: 110px;
+}

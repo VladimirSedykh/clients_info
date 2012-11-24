@@ -1,5 +1,9 @@
 CliensInfo::Application.routes.draw do
-  resources :clients
+  resources :clients do
+    collection do
+      get "change_group"
+    end
+  end
   root :to => "clients#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.

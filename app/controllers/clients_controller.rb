@@ -1,18 +1,18 @@
 class ClientsController < ApplicationController
+  before_filter :find_client, :only => [:show, :edit, :update, :destroy]
+  before_filter :init_client, :only => [:new, :create]
+
   def index
     @client = Client.new
-    @clients = Client.all
+    @clients = Client.by_group(current_group)
     @contacts = Array.new(2) { @client.contacts.build }
   end
 
-  def new
-    @client = Client.new(params[:client])
-  end
-
   def create
-    @client = Client.new(params[:client])
     params[:contacts].each do |contact_params|
-      @client.contacts.new(contact_params)
+      unless contact_params.values.delete_if(&:blank?).empty?
+        @client.contacts.new(contact_params)
+      end
     end
     if @client.save
       @client.update_short_contacts
@@ -22,5 +22,30 @@ class ClientsController < ApplicationController
       @clients = Client.all
       render :action => "index"
     end
+  end
+
+  def update
+    @client.update_attributes(params[:client])
+    redirect_to client_path(@client)
+  end
+
+  def destroy
+    @client.destroy
+    redirect_to root_path
+  end
+
+  def change_group
+    session[:group] = params[:group]
+    redirect_to root_path
+  end
+
+  private
+
+  def init_client
+    @client = Client.new(params[:client])
+  end
+
+  def find_client
+    @client = Client.find(params[:id])
   end
 end
