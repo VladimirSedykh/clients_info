@@ -1,3 +1,5 @@
+#!/bin/env ruby
+# encoding: utf-8
 class ClientsController < ApplicationController
   before_filter :find_client, :only => [:show, :edit, :update, :destroy]
   before_filter :init_client, :only => [:new, :create]
@@ -20,6 +22,7 @@ class ClientsController < ApplicationController
     end
     if @client.save
       @client.update_short_contacts
+      flash[:notice] = "Запись успешно создана."
       redirect_to root_path
     else
       @contacts = @client.contacts

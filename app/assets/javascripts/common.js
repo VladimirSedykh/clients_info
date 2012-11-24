@@ -24,4 +24,8 @@ $(document).ready(function(){
   if (name_value.val() != undefined && name_value.val() != ""){
     $("#create_client").modal();
   }
+
+ $('a.close').click(function() {
+    $(this).parent().fadeOut("fast");
+  });
 })
