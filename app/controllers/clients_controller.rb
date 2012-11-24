@@ -13,7 +13,7 @@ class ClientsController < ApplicationController
   end
 
   def create
-    params[:contacts].each do |contact_params|
+    (params[:contacts] || []).each do |contact_params|
       unless contact_params.values.delete_if(&:blank?).empty?
         @client.contacts.new(contact_params)
       end
@@ -23,6 +23,7 @@ class ClientsController < ApplicationController
       redirect_to root_path
     else
       @contacts = @client.contacts
+      @contacts = Array.new(2) { @client.contacts.build } if @contacts.empty?
       @clients = Client.by_group(current_group)
       render :action => "index"
     end

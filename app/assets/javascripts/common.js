@@ -12,10 +12,16 @@ $(document).ready(function(){
       if(name.val() == "" || name.val() == null){
         if (!$(".name-group").hasClass("error")){
           $(".name-group").addClass("error");
+          $(".name-group").find(".error").remove();
           $(".name-group").find(".controls").append("<br /><span class='error'>Введите название.</span>");
         }
       return false;
       }
     }
   })
+
+  var name_value = $(".client_edit_form").find("#inputName").val();
+  if (name_value != undefined && name_value != ""){
+    $("#create_client").modal();
+  }
 })

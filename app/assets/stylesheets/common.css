@@ -1,3 +1,7 @@
+body {
+  background: #E4E6E5;
+}
+
 .form-horizontal .control-label {
   width: 90px;
 }
@@ -11,7 +15,7 @@
 }
 
 .error {
-  color: #B94A48;
+  color: red;
   width: 1px;
   position: absolute;
   white-space: nowrap;

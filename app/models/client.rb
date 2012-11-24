@@ -4,6 +4,7 @@ class Client < ActiveRecord::Base
   attr_accessible :name, :description, :address, :activity, :role, :created_at, :updated_at, :state, :short_contacts
   has_many :contacts, :dependent => :destroy
   validates_presence_of :name
+  validate :check_name
 
   GROUPS = { "client" => "Клиенты", "provider" => "Поставщики", "partner" => "Партнеры" }
 
@@ -20,5 +21,13 @@ class Client < ActiveRecord::Base
     emails = contacts.map(&:email).delete_if(&:blank?)
     data = [cellphones.first, phones.first, emails.first].compact.join(", ")
     update_attributes(:short_contacts => data)
+  end
+
+  private
+
+  def check_name
+    if Client.where(:name => self.name, :role => self.role).count > 0
+      errors[:base] << "Клиент с таким именем уже существует."
+    end
   end
 end

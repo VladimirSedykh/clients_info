@@ -1,10 +1,21 @@
-<%= render "form" %>
-<table class="table table-striped">
-  <thead>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Contacts</th>
-    <th>Created At</th>
-  </thead>
-  <%= render @clients.reverse %>
-</table>
+<a href="#create_client" role="button" class="btn btn-primary btn-large" data-toggle="modal">Создать</a>
+
+<div id="create_client" class="modal container hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3>Responsive</h3>
+  </div>
+  <%= render "form" %>
+</div>
+
+<div class="modal-body">
+  <table class="table table-striped">
+    <thead>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Contacts</th>
+      <th>Created At</th>
+    </thead>
+    <%= render @clients.reverse %>
+  </table>
+</div>

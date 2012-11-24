@@ -1,45 +1,50 @@
-<%= form_for @client, :html => {:class => "client_edit_form form-horizontal well span16"}  do |client| %>
-  <div class="pull-left">
-  <div class="control-group name-group">
-  <%= client.label "Name:", :class => "control-label", :for => "inputName" %>
-  <div class="controls">
-    <%= client.text_field :name, :id => "inputName" %>
+<div class="modal-body">
+  <%= form_for @client, :html => {:class => "client_edit_form form-horizontal"}  do |client| %>
+    <div class="pull-left">
+    <div class="control-group name-group">
+      <%= client.label "Name:", :class => "control-label", :for => "inputName" %>
+      <div class="controls">
+        <%= client.text_field :name, :id => "inputName" %>
+        <% @client.errors.full_messages.each do |msg| %>
+          <span class="error"><%= msg %></span>
+        <% end %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= client.label "State:", :class => "control-label", :for => "inputState" %>
+      <div class="controls">
+        <%= client.select :state, State.all.map(&:name), { :include_blank => true }, :id => "inputState" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= client.label "Address:", :class => "control-label", :for => "inputAddress" %>
+      <div class="controls">
+        <%= client.text_area :address, :rows => 3, :id => "inputAddress" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= client.label "Activity:", :class => "control-label", :for => "inputActivity" %>
+      <div class="controls">
+        <%= client.select :activity, Activity.all.map(&:name), { :include_blank => true }, :id => "inputActivity" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= client.label "Description:", :class => "control-label", :for => "inputDescription" %>
+      <div class="controls">
+        <%= client.text_area :description, :rows => 3, :id => "inputDescription" %>
+      </div>
+    </div>
   </div>
-</div>
-<div class="control-group">
-  <%= client.label "State:", :class => "control-label", :for => "inputState" %>
-  <div class="controls">
-    <%= client.select :state, State.all.map{|s| [s.name, s.id]}, { :include_blank => true }, :id => "inputState" %>
-  </div>
-</div>
-<div class="control-group">
-  <%= client.label "Address:", :class => "control-label", :for => "inputAddress" %>
-  <div class="controls">
-    <%= client.text_area :address, :rows => 3, :id => "inputAddress" %>
-  </div>
-</div>
-<div class="control-group">
-  <%= client.label "Activity:", :class => "control-label", :for => "inputActivity" %>
-  <div class="controls">
-    <%= client.select :activity, Activity.all.map(&:name), { :include_blank => true }, :id => "inputActivity" %>
-  </div>
-</div>
-<div class="control-group">
-  <%= client.label "Description:", :class => "control-label", :for => "inputDescription" %>
-  <div class="controls">
-    <%= client.text_area :description, :rows => 3, :id => "inputDescription" %>
-  </div>
-</div>
-</div>
 
-<% unless params[:action] == "edit" %>
-  <%= client.hidden_field :role, :value => current_group %>
+  <% unless params[:action] == "edit" %>
+    <%= client.hidden_field :role, :value => current_group %>
   <%= render "contacts" %>
 <% end %>
 
-<div class="control-group unfloated">
-  <div class="controls">
-    <%= client.submit :class => "btn btn-primary btn-large"%>
+  <div class="control-group unfloated">
+    <div class="controls">
+      <%= client.submit :class => "btn btn-primary btn-large"%>
+    </div>
   </div>
-</div>
 <% end %>
+</div>
