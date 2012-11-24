@@ -21,3 +21,18 @@
   </thead>
   <%= render @client.contacts %>
 </table>
+
+
+<%= form_for [@client, @contact], :method => "post" do |contact|%>
+  <div class="control-group name-group">
+  <%= contact.label "Name:", :class => "control-label", :for => "inputName" %>
+  <div class="controls">
+    <%= contact .text_field :name, :id => "inputName" %>
+  </div>
+</div>
+<div class="control-group unfloated">
+  <div class="controls">
+    <%= contact.submit :class => "btn btn-primary btn-large"%>
+  </div>
+</div>
+<% end %>

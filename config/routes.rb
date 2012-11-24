@@ -3,6 +3,7 @@ CliensInfo::Application.routes.draw do
     collection do
       get "change_group"
     end
+    resources :contacts
   end
   root :to => "clients#index"
   # The priority is based upon order of creation:
