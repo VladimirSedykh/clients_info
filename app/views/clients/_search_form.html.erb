@@ -1,0 +1,52 @@
+<div id="search_client" class="modal container hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3>Поиск:</h3>
+  </div>
+
+<div class="modal-body">
+  <%= form_for @client, :url => { :action => "search" },  :method => "post", :html => {:class => "client_edit_form form-horizontal"}  do |search| %>
+
+
+    <div class="pull-left">
+    <div class="control-group">
+      <%= search.label "Name:", :class => "control-label", :for => "searchName" %>
+      <div class="controls">
+        <%= search.text_field :name, :id => "searchName" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= search.label "State:", :class => "control-label", :for => "inputState" %>
+      <div class="controls">
+        <%= search.select :state, State.all.map(&:name), { :include_blank => true }, :id => "inputState" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= search.label "Address:", :class => "control-label", :for => "inputAddress" %>
+      <div class="controls">
+        <%= search.text_area :address, :rows => 3, :id => "inputAddress" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= search.label "Activity:", :class => "control-label", :for => "inputActivity" %>
+      <div class="controls">
+        <%= search.select :activity, Activity.all.map(&:name), { :include_blank => true }, :id => "inputActivity" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= search.label "Description:", :class => "control-label", :for => "inputDescription" %>
+      <div class="controls">
+        <%= search.text_area :description, :rows => 3, :id => "inputDescription" %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="control-group unfloated">
+    <div class="controls">
+      <%= search.submit "Поиск", :class => "btn btn-primary btn-large"%>
+    </div>
+  </div>
+<% end %>
+</div>
+</div>

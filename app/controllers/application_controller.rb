@@ -12,4 +12,6 @@ class ApplicationController < ActionController::Base
   def current_group
     session[:group]
   end
+
+  WillPaginate.per_page = 1
 end

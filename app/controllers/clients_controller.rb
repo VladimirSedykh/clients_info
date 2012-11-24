@@ -6,8 +6,17 @@ class ClientsController < ApplicationController
 
   def index
     @client = Client.new
-    @clients = Client.by_group(current_group)
+    @clients = Client.by_group(current_group).paginate(:page => params[:page])
     @contacts = Array.new(2) { @client.contacts.build }
+  end
+
+  def search
+    @client = Client.new
+    @contacts = Array.new(2) { @client.contacts.build }
+    session[:params] = params if self.request.post?
+    search_params = self.request.get? ? session[:params] : params
+    @clients = Client.search(search_params, current_group).paginate(:page => params[:page])
+    render :index
   end
 
   def show

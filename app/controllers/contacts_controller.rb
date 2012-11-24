@@ -23,6 +23,7 @@ class ContactsController < ApplicationController
 
   def destroy
     @contact.destroy
+    @client.update_short_contacts
     redirect_to client_path(@client)
   end
 

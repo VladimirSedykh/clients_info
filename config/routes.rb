@@ -2,6 +2,7 @@ CliensInfo::Application.routes.draw do
   resources :clients do
     collection do
       get "change_group"
+      match "search"
     end
     resources :contacts
   end

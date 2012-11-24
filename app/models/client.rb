@@ -23,6 +23,19 @@ class Client < ActiveRecord::Base
     update_attributes(:short_contacts => data)
   end
 
+  def self.search(params, group)
+    if params[:client].present?
+      search_params = params[:client].delete_if{|k,v| v.blank?}
+      conditions = []
+      search_params.each do |key, value|
+        conditions << (key + " like \"%" + value + "%\"")
+      end
+      Client.by_group(group).where(conditions.join(" AND "))
+    else
+      Client.by_group(group)
+    end
+  end
+
   private
 
   def check_name
