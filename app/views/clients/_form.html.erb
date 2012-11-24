@@ -9,7 +9,7 @@
 <div class="control-group">
   <%= client.label "State:", :class => "control-label", :for => "inputState" %>
   <div class="controls">
-    <%= client.text_field :state, :id => "inputState" %>
+    <%= client.select :state, State.all.map{|s| [s.name, s.id]}, { :include_blank => true }, :id => "inputState" %>
   </div>
 </div>
 <div class="control-group">
@@ -21,7 +21,7 @@
 <div class="control-group">
   <%= client.label "Activity:", :class => "control-label", :for => "inputActivity" %>
   <div class="controls">
-    <%= client.text_field :activity, :id => "inputActivity" %>
+    <%= client.select :activity, Activity.all.map(&:name), { :include_blank => true }, :id => "inputActivity" %>
   </div>
 </div>
 <div class="control-group">

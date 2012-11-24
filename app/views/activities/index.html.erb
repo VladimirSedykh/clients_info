@@ -1,0 +1,19 @@
+<h2>Виды деятельности:</h2>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+  </tr>
+
+<% @activities.each do |activity| %>
+  <tr>
+    <td><%= activity.name %></td>
+    <td><%= link_to 'Редактировать', edit_activity_path(activity) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Создать', new_activity_path %>
