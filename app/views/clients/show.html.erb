@@ -6,7 +6,6 @@
 <p> Дата создания: <%= @client.created_at.strftime("%m/%d/%Y %H:%M:%S")%> </p>
 <p> Дата последнего редактирования: <%= @client.updated_at.strftime("%m/%d/%Y %H:%M:%S")%> </p>
 
-<%= link_to "Удалить", client_path(@client), :method => :delete , :confirm => "Вы уверены?"%>
 <%= link_to "Редактировать", edit_client_path(@client) %>
 
 <h3>Contacts:</h3>
@@ -23,16 +22,4 @@
 </table>
 
 
-<%= form_for [@client, @contact], :method => "post" do |contact|%>
-  <div class="control-group name-group">
-  <%= contact.label "Name:", :class => "control-label", :for => "inputName" %>
-  <div class="controls">
-    <%= contact .text_field :name, :id => "inputName" %>
-  </div>
-</div>
-<div class="control-group unfloated">
-  <div class="controls">
-    <%= contact.submit :class => "btn btn-primary btn-large"%>
-  </div>
-</div>
-<% end %>
+<%= render :partial => "contacts/form" %>
