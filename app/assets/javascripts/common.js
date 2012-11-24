@@ -20,8 +20,8 @@ $(document).ready(function(){
     }
   })
 
-  var name_value = $(".client_edit_form").find("#inputName").val();
-  if (name_value != undefined && name_value != ""){
+  var name_value = $(".client_edit_form").find("#inputName");
+  if (name_value.val() != undefined && name_value.val() != ""){
     $("#create_client").modal();
   }
 })

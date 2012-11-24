@@ -1,56 +1,45 @@
-<div id="create_contact" class="modal hide fade">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3>Создать Контакт:</h3>
+<%= form_for [@client, @contact], :html => {:class => "form-horizontal"} do |c| %>
+  <div class="pull-left">
+  <div class="control-group">
+    <%= c.label "Name:", :class => "control-label", :for => "inputName" %>
+    <div class="controls">
+      <%= c.text_area :name, :rows => 2, :id => "inputName" %>
+    </div>
   </div>
-  <div class="modal-body">
-    <% @contact.errors.full_messages.each do |error| %>
-      <p><%= error %></p>
-  <% end %>
-    <%= form_for [@client, @contact], :html => {:class => "form-horizontal"} do |c| %>
-      <div class="pull-left">
-      <div class="control-group">
-        <%= c.label "Name:", :class => "control-label", :for => "inputName" %>
-        <div class="controls">
-          <%= c.text_area :name, :rows => 2, :id => "inputName" %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= c.label "CellPhone:", :class => "control-label", :for => "inputPhone" %>
-        <div class="controls">
-          <%= c.text_field :cellphone, :id => "inputPhone", :class => "phone" %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= c.label "Phone:", :class => "control-label", :for => "inputPhone" %>
-        <div class="controls">
-          <%= c.text_field :phone, :id => "inputPhone", :class => "phone" %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= c.label "Email:", :class => "control-label", :for => "inputEmail" %>
-        <div class="controls">
-          <%= c.text_field :email, :id => "inputEmail" %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= c.label "ICQ:", :class => "control-label", :for => "inputIcq" %>
-        <div class="controls">
-          <%= c.text_field :icq, :id => "inputIcq" %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= c.label "Skype:", :class => "control-label", :for => "inputSkype" %>
-        <div class="controls">
-          <%= c.text_field :skype, :id => "inputSkype" %>
-        </div>
-      </div>
+  <div class="control-group">
+    <%= c.label "CellPhone:", :class => "control-label", :for => "inputPhone" %>
+    <div class="controls">
+      <%= c.text_field :cellphone, :id => "inputPhone", :class => "phone" %>
     </div>
-    <div class="control-group unfloated">
-      <div class="controls">
-        <%= c.submit :class => "btn btn-primary btn-large"%>
-      </div>
+  </div>
+  <div class="control-group">
+    <%= c.label "Phone:", :class => "control-label", :for => "inputPhone" %>
+    <div class="controls">
+      <%= c.text_field :phone, :id => "inputPhone", :class => "phone" %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= c.label "Email:", :class => "control-label", :for => "inputEmail" %>
+    <div class="controls">
+      <%= c.text_field :email, :id => "inputEmail" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= c.label "ICQ:", :class => "control-label", :for => "inputIcq" %>
+    <div class="controls">
+      <%= c.text_field :icq, :id => "inputIcq" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= c.label "Skype:", :class => "control-label", :for => "inputSkype" %>
+    <div class="controls">
+      <%= c.text_field :skype, :id => "inputSkype" %>
+    </div>
   </div>
 </div>
+<div class="control-group unfloated">
+  <div class="controls">
+    <%= c.submit :class => "btn btn-primary btn-large"%>
+  </div>
+</div>
+<% end %>

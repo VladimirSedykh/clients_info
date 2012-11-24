@@ -26,8 +26,8 @@ class Client < ActiveRecord::Base
   private
 
   def check_name
-    if Client.where(:name => self.name, :role => self.role).count > 0
-      errors[:base] << "Клиент с таким именем уже существует."
+    if self.new_record? && Client.where(:name => self.name, :role => self.role).count > 0
+      errors[:base] << "#{self.name} в этой группе уже существует."
     end
   end
 end

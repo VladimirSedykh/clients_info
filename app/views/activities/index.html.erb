@@ -1,19 +1,16 @@
-<h2>Виды деятельности:</h2>
+<h3 class="margined">Виды деятельности:</h3>
+<%= link_to 'Создать', new_activity_path, :class => "btn btn-primary btn-large margined" %>
+<br />
 
-<table>
-  <tr>
-    <th>Name</th>
+<table class="table table-striped table-condensed table-bordered">
+  <thead class="text-info">
+    <th><strong>Имя</strong></th>
     <th></th>
-  </tr>
-
-<% @activities.each do |activity| %>
-  <tr>
+  </thead>
+  <% @activities.each do |activity| %>
+  <tr class="table-block">
     <td><%= activity.name %></td>
     <td><%= link_to 'Редактировать', edit_activity_path(activity) %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'Создать', new_activity_path %>

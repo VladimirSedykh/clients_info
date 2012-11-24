@@ -1,5 +1,4 @@
-<h3>Редактирование</h3>
-
+<%= link_to 'Назад', activities_path, :class => "btn margined" %>
+<h3 class="margined">Редактирование</h3>
 <%= render 'form' %>
-<%= link_to 'Удалить', @activity, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Назад', activities_path %>
+<%= link_to 'Удалить', @activity, method: :delete, data: { confirm: 'Are you sure?' }, :class => "margined" %>

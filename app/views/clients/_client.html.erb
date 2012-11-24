@@ -1,6 +1,8 @@
-<tr>
+<tr class="table-block">
   <td> <%= link_to client.name, client_path(client)  %> </td>
-  <td> <%= client.description%> </td>
   <td> <%= client.short_contacts %> </td>
+  <td> <%= client.state %> </td>
+  <td> <%= client.address %> </td>
+  <td> <%= client.activity %> </td>
   <td> <%= client.created_at.strftime("%m/%d/%Y %H:%M:%S")%> </td>
 </tr>

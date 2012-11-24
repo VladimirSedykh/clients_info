@@ -2,6 +2,27 @@ body {
   background: #E4E6E5;
 }
 
+.client-info {
+  width: 600px
+}
+
+.margined {
+  position: relative;
+  left: 20px;
+}
+
+.btn-group.margined {
+  margin-bottom: 20px;
+}
+
+.btn.btn-primary.btn-large.margined {
+  margin-bottom: 20px;
+}
+
+.table-block{
+  background: #FFFBED;
+}
+
 .form-horizontal .control-label {
   width: 90px;
 }

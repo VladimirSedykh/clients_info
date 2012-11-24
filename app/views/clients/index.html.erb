@@ -1,21 +1,26 @@
-<a href="#create_client" role="button" class="btn btn-primary btn-large" data-toggle="modal">Создать</a>
+<div class="btn-group margined">
+  <a href="#create_client" role="button" class="btn btn-primary btn-large" data-toggle="modal">Создать</a>
+  <a href="/" role="button" class="btn btn-primary btn-large" data-toggle="modal">Все</a>
+  <a href="#create_client" role="button" class="btn btn-primary btn-large" data-toggle="modal">Посик</a>
+</div>
+
 
 <div id="create_client" class="modal container hide fade">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3>Responsive</h3>
+    <h3>Создание:</h3>
   </div>
   <%= render "form" %>
 </div>
 
-<div class="modal-body">
-  <table class="table table-striped">
-    <thead>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Contacts</th>
-      <th>Created At</th>
-    </thead>
-    <%= render @clients.reverse %>
-  </table>
-</div>
+<table class="table table-striped table-condensed table-bordered">
+  <thead class="text-info">
+    <th><strong>Название</strong></th>
+    <th><strong>Контакты</strong></th>
+    <th><strong>Область</strong></th>
+    <th><strong>Адрес</strong></th>
+    <th><strong>Вид деятельности</strong></th>
+    <th><strong>Дата создания</strong></th>
+  </thead>
+  <%= render @clients.reverse %>
+</table>

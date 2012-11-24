@@ -5,6 +5,7 @@ class ContactsController < ApplicationController
   def create
     @contact = @client.contacts.build(params[:contact])
     if @contact.save
+      @client.update_short_contacts
       redirect_to client_path(@client)
     else
       render "new"
@@ -13,6 +14,7 @@ class ContactsController < ApplicationController
 
   def update
     if @contact.update_attributes(params[:contact])
+      @client.update_short_contacts
       redirect_to client_path(@client)
     else
       render "edit"
