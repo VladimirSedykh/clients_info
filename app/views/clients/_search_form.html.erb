@@ -2,9 +2,10 @@
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3>Поиск:</h3>
+    <%= link_to "Отчистить", "#", :id => "clean_search_form" %>
   </div>
 
-<div class="modal-body">
+<div class="modal-body" id="search_form">
   <%= form_for @client, :url => { :action => "search" },  :method => "post", :html => {:class => "client_edit_form form-horizontal"}  do |search| %>
 
 
@@ -12,31 +13,31 @@
     <div class="control-group">
       <%= search.label "Название:", :class => "control-label", :for => "searchName" %>
       <div class="controls">
-        <%= search.text_field :name, :id => "searchName" %>
+        <%= search.text_field :name, :value => search_value(session["params"], "client", "name"), :id => "searchName" %>
       </div>
     </div>
     <div class="control-group">
       <%= search.label "Область:", :class => "control-label", :for => "inputState" %>
       <div class="controls">
-        <%= search.select :state, State.all.map(&:name), { :include_blank => true }, :id => "inputState" %>
+        <%= search.select :state, State.all.map(&:name), { :selected => search_value(session["params"], "client", "state"), :include_blank => true }, :id => "inputState" %>
       </div>
     </div>
     <div class="control-group">
       <%= search.label "Адрес:", :class => "control-label", :for => "inputAddress" %>
       <div class="controls">
-        <%= search.text_area :address, :rows => 3, :id => "inputAddress" %>
+        <%= search.text_area :address, :value => search_value(session["params"], "client", "address"), :rows => 3, :id => "inputAddress" %>
       </div>
     </div>
     <div class="control-group">
       <%= search.label "Деятельность:", :class => "control-label", :for => "inputActivity" %>
       <div class="controls">
-        <%= search.select :activity, Activity.all.map(&:name), { :include_blank => true }, :id => "inputActivity" %>
+        <%= search.select :activity, Activity.all.map(&:name), { :selected => search_value(session["params"], "client", "activity"), :include_blank => true }, :id => "inputActivity" %>
       </div>
     </div>
     <div class="control-group">
       <%= search.label "Описание:", :class => "control-label", :for => "inputDescription" %>
       <div class="controls">
-        <%= search.text_area :description, :rows => 3, :id => "inputDescription" %>
+        <%= search.text_area :description, :value => search_value(session["params"], "client", "description"), :rows => 3, :id => "inputDescription" %>
       </div>
     </div>
     </div>
@@ -46,31 +47,31 @@
       <div class="control-group">
         <%= search.label "Имя:", :class => "control-label", :for => "inputContactName" %>
         <div class="controls">
-          <%= text_field_tag "contact[name]", "", :id => "inputContactName" %>
+          <%= text_field_tag "contact[name]", "", :value => search_value(session["params"], "contact", "name"), :id => "inputContactName" %>
         </div>
       </div>
       <div class="control-group">
         <%= search.label "Телефон:", :class => "control-label", :for => "inputPhone" %>
         <div class="controls">
-          <%= text_field_tag "contact[phone]", "", :id => "inputPhone", :class => "phone" %>
+          <%= text_field_tag "contact[phone]", "", :value => search_value(session["params"], "contact", "phone"), :id => "inputPhone", :class => "phone" %>
         </div>
       </div>
       <div class="control-group">
         <%= search.label "Email:", :class => "control-label", :for => "inputEmail" %>
         <div class="controls">
-          <%= text_field_tag "contact[email]", "", :id => "inputPhone" %>
+          <%= text_field_tag "contact[email]", "", :value => search_value(session["params"], "contact", "email"), :id => "inputPhone" %>
         </div>
       </div>
       <div class="control-group">
         <%= search.label "ICQ:", :class => "control-label", :for => "inputIcq" %>
         <div class="controls">
-          <%= text_field_tag "contact[icq]", "", :id => "inputIcq" %>
+          <%= text_field_tag "contact[icq]", "", :value => search_value(session["params"], "contact", "icq"), :id => "inputIcq" %>
         </div>
       </div>
       <div class="control-group">
         <%= search.label "Skype:", :class => "control-label", :for => "inputSkype" %>
         <div class="controls">
-          <%= text_field_tag "contact[skype]", "", :id => "inputSkype" %>
+          <%= text_field_tag "contact[skype]", "", :value => search_value(session["params"], "contact", "skype"), :id => "inputSkype" %>
         </div>
       </div>
     </span>

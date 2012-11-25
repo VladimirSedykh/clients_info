@@ -29,16 +29,8 @@
         </li>
         <li class="activities"> <%= link_to "Настройки", settings_path %></li>
         <% if params[:controller] == "clients" && %w(index create search).include?(params[:action]) %>
-          <li class="divider-vertical"></li>
-        <li>
-          <a href="#create_client" role="button" class="" data-toggle="modal">Создать</a>
-        </li>
-        <li>
-          <a href="/" role="button" class="" data-toggle="modal">Все</a>
-        </li>
-        <li>
-          <a href="#search_client" role="button" class="" data-toggle="modal">Поиск</a>
-        </li>
+          <li> <a href="#search_client" role="button" class="" data-toggle="modal">Поиск</a> </li>
+          <li> <a href="#create_client" role="button" class="" data-toggle="modal">Создать</a> </li>
       <% end %>
       </ul>
     </div>

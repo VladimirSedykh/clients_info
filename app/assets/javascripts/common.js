@@ -1,11 +1,5 @@
 $(document).ready(function(){
-  //$("li").click(function(){
-  //  $("li").removeClass("active");
-  //  $(this).addClass("active");
-  //});
-
   var controller = $(".controller").val();
-  console.log(controller);
   $("." + controller).addClass("active");
 
   $(".phone").mask("(999) 999-9999");
@@ -32,4 +26,6 @@ $(document).ready(function(){
  $('a.close').click(function() {
     $(this).parent().fadeOut("fast");
   });
+
+  $("#clean_search_form").live("click", function(){$("#search_form.modal-body").find("input, select, textarea").not(".btn").val("")});
 })
