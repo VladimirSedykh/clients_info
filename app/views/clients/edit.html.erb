@@ -1,2 +1,5 @@
 <%= render "form" %>
+<%= link_to "Назад", client_path(@client), :class => "margined btn"%>
+<br />
+<br />
 <%= link_to "Удалить", client_path(@client), :method => :delete , :confirm => "Вы уверены?", :class => "margined"%>

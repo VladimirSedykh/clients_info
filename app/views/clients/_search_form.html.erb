@@ -1,4 +1,4 @@
-<div id="search_client" class="modal container hide fade">
+<div id="search_client" class="modal hide fade container search-form">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3>Поиск:</h3>
@@ -39,7 +39,41 @@
         <%= search.text_area :description, :rows => 3, :id => "inputDescription" %>
       </div>
     </div>
-  </div>
+    </div>
+
+
+    <span class="form-horizontal pull-right">
+      <div class="control-group">
+        <%= search.label "Name:", :class => "control-label", :for => "inputContactName" %>
+        <div class="controls">
+          <%= text_field_tag "contact[name]", "", :id => "inputContactName" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= search.label "Phone:", :class => "control-label", :for => "inputPhone" %>
+        <div class="controls">
+          <%= text_field_tag "contact[phone]", "", :id => "inputPhone", :class => "phone" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= search.label "Email:", :class => "control-label", :for => "inputEmail" %>
+        <div class="controls">
+          <%= text_field_tag "contact[email]", "", :id => "inputPhone" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= search.label "ICQ:", :class => "control-label", :for => "inputIcq" %>
+        <div class="controls">
+          <%= text_field_tag "contact[icq]", "", :id => "inputIcq" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= search.label "Skype:", :class => "control-label", :for => "inputSkype" %>
+        <div class="controls">
+          <%= text_field_tag "contact[skype]", "", :id => "inputSkype" %>
+        </div>
+      </div>
+    </span>
 
 
   <div class="control-group unfloated">

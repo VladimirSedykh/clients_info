@@ -7,7 +7,7 @@ class Client < ActiveRecord::Base
   validate :check_name
 
   GROUPS = { "client" => "Клиенты", "provider" => "Поставщики", "partner" => "Партнеры" }
-
+  default_scope :order => 'created_at DESC'
   scope :by_group, lambda {|group| where(:role => group)}
 
   def contacts_for_update
@@ -24,19 +24,36 @@ class Client < ActiveRecord::Base
   end
 
   def self.search(params, group)
-    if params[:client].present?
-      search_params = params[:client].delete_if{|k,v| v.blank?}
-      conditions = []
-      search_params.each do |key, value|
-        conditions << (key + " like \"%" + value + "%\"")
+    clients =
+      if params[:client].present?
+        Client.by_group(group).where(Client.search_params(params, :client))
+      else
+        Client.by_group(group)
       end
-      Client.by_group(group).where(conditions.join(" AND "))
-    else
-      Client.by_group(group)
+
+    if params[:contact].present?
+      clients.joins(:contacts).where(Client.search_params(params, :contact))
     end
   end
 
   private
+
+  def self.search_params(params, param)
+    search_params = params[param].delete_if{|k,v| v.blank?}
+    conditions = []
+    search_params.each do |key, value|
+      if param == :client
+        conditions << (key + " like \"%" + value + "%\"")
+      elsif param == :contact
+        if key == "phone"
+          conditions << (" (contacts.phone like \"%" + value + "%\" OR contacts.cellphone like \"%" + value + "%\") ")
+        else
+          conditions << ("contacts." + key + " like \"%" + value + "%\"")
+        end
+      end
+    end
+    return conditions.join(" AND ")
+  end
 
   def check_name
     if self.new_record? && Client.where(:name => self.name, :role => self.role).count > 0

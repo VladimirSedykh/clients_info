@@ -50,3 +50,7 @@ body {
   text-align: right;
   width: 110px;
 }
+
+.modal.hide.fade.container.search-form {
+  width: 39%;
+}
