@@ -36,7 +36,7 @@ class ClientsController < ApplicationController
     else
       @contacts = @client.contacts
       @contacts = Array.new(2) { @client.contacts.build } if @contacts.empty?
-      @clients = Client.by_group(current_group)
+      @clients = Client.by_group(current_group).paginate(:page => params[:page])
       render :action => "index"
     end
   end

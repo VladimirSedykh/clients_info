@@ -7,7 +7,7 @@ class Client < ActiveRecord::Base
   validate :check_name
 
   GROUPS = { "client" => "Клиенты", "provider" => "Поставщики", "partner" => "Партнеры" }
-  default_scope :order => 'created_at DESC'
+  default_scope :order => 'clients.created_at DESC'
   scope :by_group, lambda {|group| where(:role => group)}
 
   def contacts_for_update
@@ -31,8 +31,9 @@ class Client < ActiveRecord::Base
         Client.by_group(group)
       end
 
-    if params[:contact].present?
-      clients = clients.joins(:contacts).where(Client.search_params(params, :contact))
+    conditions = Client.search_params(params, :contact)
+    if conditions.present?
+      clients = clients.joins(:contacts).where(conditions)
     end
     return clients
   end
@@ -44,7 +45,7 @@ class Client < ActiveRecord::Base
     conditions = []
     search_params.each do |key, value|
       if param == :client
-        conditions << (key + " like \"%" + value + "%\"")
+        conditions << ("clients." + key + " like \"%" + value + "%\"")
       elsif param == :contact
         if key == "phone"
           conditions << (" (contacts.phone like \"%" + value + "%\" OR contacts.cellphone like \"%" + value + "%\") ")
@@ -58,7 +59,7 @@ class Client < ActiveRecord::Base
 
   def check_name
     if self.new_record? && Client.where(:name => self.name, :role => self.role).count > 0
-      errors[:base] << "#{self.name} в этой группе уже существует."
+      errors[:base] << "Такое имя в этой категории уже существует."
     end
   end
 end

@@ -54,3 +54,13 @@ body {
 .modal.hide.fade.container.search-form {
   width: 39%;
 }
+
+.btn-group.margined.clients-group {
+  float: left;
+}
+
+.pagination {
+  position: relative;
+  top: 3px;
+  left: 16px;
+}
