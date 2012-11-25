@@ -26,7 +26,7 @@
           <% unless current_group == "partner" %>
             <li><%= link_to "Партнеры", change_group_clients_path(:group => "partner") %></li>
         <% end %>
-          <% unless current_group == "partner" %>
+          <% unless current_group == "potential" %>
             <li><%= link_to "Потенциальные", change_group_clients_path(:group => "potential") %></li>
         <% end %>
         </ul>
