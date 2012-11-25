@@ -4,7 +4,7 @@ class CreateClients < ActiveRecord::Migration
       t.string :name
       t.string :address
       t.string :state
-      t.integer :activity
+      t.string :activity
       t.string :description
       t.string :short_contacts
       t.string :role
