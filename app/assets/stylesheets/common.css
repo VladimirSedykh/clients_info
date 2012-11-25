@@ -56,7 +56,7 @@ body {
 
 .brand {
   text-align: right;
-  width: 120px;
+  width: 160px;
 }
 
 .modal.hide.fade.container.search-form {
@@ -75,7 +75,7 @@ body {
 }
 
 .alert.alert-warning.warning-flash {
-  position:relative;
+  position: relative;
   top: 50px;
   margin-bottom: 5px;
 }

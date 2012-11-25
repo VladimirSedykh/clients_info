@@ -6,7 +6,7 @@ class Client < ActiveRecord::Base
   validates_presence_of :name
   validate :check_name
 
-  GROUPS = { "client" => "Клиенты", "provider" => "Поставщики", "partner" => "Партнеры" }
+  GROUPS = { "client" => "Клиенты", "provider" => "Поставщики", "partner" => "Партнеры", "potential" => "Потенциальные" }
   default_scope :order => 'clients.created_at DESC'
   scope :by_group, lambda {|group| where(:role => group)}
 
