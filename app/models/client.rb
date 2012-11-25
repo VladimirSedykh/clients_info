@@ -32,8 +32,9 @@ class Client < ActiveRecord::Base
       end
 
     if params[:contact].present?
-      clients.joins(:contacts).where(Client.search_params(params, :contact))
+      clients = clients.joins(:contacts).where(Client.search_params(params, :contact))
     end
+    return clients
   end
 
   private
