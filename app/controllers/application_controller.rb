@@ -13,5 +13,5 @@ class ApplicationController < ActionController::Base
     session[:group]
   end
 
-  WillPaginate.per_page = 5
+  WillPaginate.per_page = 25
 end

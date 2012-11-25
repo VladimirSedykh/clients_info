@@ -7,42 +7,55 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="navbar">
+<div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <%= link_to current_group_name, root_path, :class => "brand"  %>
     <div class="nav-collapse collapse">
       <ul class="nav">
         <li class="divider-vertical"></li>
-        <li class="dropdown">
+        <li class="dropdown clients">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Категории<b class="caret"></b></a>
         <ul class="dropdown-menu">
           <% unless current_group == "client" %>
             <li><%= link_to "Клиенты", change_group_clients_path(:group => "client") %></li>
-          <% end %>
+        <% end %>
           <% unless current_group == "provider" %>
             <li><%= link_to "Поставщики", change_group_clients_path(:group => "provider") %></li>
-          <% end %>
+        <% end %>
           <% unless current_group == "partner" %>
             <li><%= link_to "Партнеры", change_group_clients_path(:group => "partner") %></li>
-          <% end %>
+        <% end %>
         </ul>
         </li>
-        <li><%= link_to "Настройки", settings_path %></li>
+        <li class="activities"> <%= link_to "Настройки", settings_path %></li>
+        <% if params[:controller] == "clients" && %w(index create).include?(params[:action]) %>
+          <li class="divider-vertical"></li>
+        <li>
+        <a href="#create_client" role="button" class="" data-toggle="modal">Создать</a>
+        </li>
+        <li>
+        <a href="/" role="button" class="" data-toggle="modal">Все</a>
+        </li>
+        <li>
+        <a href="#search_client" role="button" class="" data-toggle="modal">Поиск</a>
+        </li>
+      <% end %>
       </ul>
     </div>
   </div>
 </div>
 
+
+<%= hidden_field "", "", :value => params["controller"], :class => "controller" %>
 <% if flash[:notice] %>
-  <div class="alert alert-warning">
+  <div class="alert alert-warning warning-flash">
   <a class="close" href="#">&times;</a>
   <%= flash[:notice] %>
-</div>
-</div>
 <% end %>
-
-
-<%= yield %>
+</div>
+<div style="position:relative; top: 50px;">
+  <%= yield %>
+</div>
 
 </body>
 </html>

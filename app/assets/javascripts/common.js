@@ -1,8 +1,12 @@
 $(document).ready(function(){
-  $("li").click(function(){
-    $("li").removeClass("active");
-    $(this).addClass("active");
-  });
+  //$("li").click(function(){
+  //  $("li").removeClass("active");
+  //  $(this).addClass("active");
+  //});
+
+  var controller = $(".controller").val();
+  console.log(controller);
+  $("." + controller).addClass("active");
 
   $(".phone").mask("(999) 999-9999");
 

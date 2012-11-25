@@ -52,7 +52,7 @@ body {
 }
 
 .modal.hide.fade.container.search-form {
-  width: 39%;
+  width: 50%;
 }
 
 .btn-group.margined.clients-group {
@@ -63,4 +63,10 @@ body {
   position: relative;
   top: 3px;
   left: 16px;
+}
+
+.alert.alert-warning.warning-flash {
+  position:relative;
+  top: 50px;
+  margin-bottom: 5px;
 }
