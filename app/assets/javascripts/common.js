@@ -28,4 +28,9 @@ $(document).ready(function(){
   });
 
   $("#clean_search_form").live("click", function(){$("#search_form.modal-body").find("input, select, textarea").not(".btn").val("")});
+
+  $(".iframe-link").click(function(){
+    var attr = $(this).attr("attr");
+    $("#history-frame").attr('src', ("/clients/" + attr));
+  })
 })
