@@ -31,6 +31,14 @@ $(document).ready(function(){
 
   $(".iframe-link").click(function(){
     var attr = $(this).attr("attr");
-    $("#history-frame").attr('src', ("/clients/" + attr));
+    parent.frames[1].location.href = ("/clients/" + attr);
+  })
+
+  $("#close-frame").click(function(){
+    top.window.document.getElementById('main-frameset').rows = '95%,*';
+  })
+
+  $("a").not(".dropdown-toggle, .iframe-link, #close-frame").click(function(){
+    top.location = $(this).attr("href");
   })
 })

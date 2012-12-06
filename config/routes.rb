@@ -7,9 +7,10 @@ CliensInfo::Application.routes.draw do
     resources :contacts
   end
   resources :activities
+  resources :pages, :only => [:index]
   match 'settings' => 'activities#index'
 
-  root :to => "clients#index"
+  root :to => "pages#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

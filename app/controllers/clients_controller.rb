@@ -16,7 +16,7 @@ class ClientsController < ApplicationController
     session[:params] = params if self.request.post?
     search_params = self.request.get? ? session[:params] : params
     @clients = Client.search(search_params, current_group).paginate(:page => params[:page])
-    render :index
+    redirect_to pages_url(top=true)
   end
 
   def show
