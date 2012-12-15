@@ -120,3 +120,11 @@ body {
 .edit-client {
   width: 18px;
 }
+
+#new_story textarea {
+  width: 500px;
+}
+
+form {
+  margin-top: 10px;
+}
