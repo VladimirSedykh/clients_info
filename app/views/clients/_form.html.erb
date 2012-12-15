@@ -10,6 +10,12 @@
     </div>
   </div>
   <div class="control-group">
+    <%= client.label "Категория:", :class => "control-label", :for => "inputState" %>
+    <div class="controls">
+      <%= client.select :role, Client::GROUPS.map{|k, v| [v, k]}, :id => "inputState" %>
+    </div>
+  </div>
+  <div class="control-group">
     <%= client.label "Область:", :class => "control-label", :for => "inputState" %>
     <div class="controls">
       <%= client.select :state, State.all.map(&:name), { :include_blank => true }, :id => "inputState" %>
