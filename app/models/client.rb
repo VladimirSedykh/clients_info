@@ -8,7 +8,6 @@ class Client < ActiveRecord::Base
   validate :check_name
 
   GROUPS = { "client" => "Клиенты", "provider" => "Поставщики", "partner" => "Партнеры", "potential" => "Потенциальные" }
-  default_scope :order => 'clients.created_at DESC'
   scope :by_group, lambda {|group| where(:role => group)}
 
   def contacts_for_update

@@ -6,7 +6,7 @@ class ClientsController < ApplicationController
 
   def index
     @client = Client.new
-    @clients = Client.by_group(current_group).paginate(:page => params[:page])
+    @clients = Client.by_group(current_group).order(order_params).paginate(:page => params[:page])
   end
 
   def new
@@ -73,5 +73,11 @@ class ClientsController < ApplicationController
 
   def find_client
     @client = Client.find(params[:id])
+  end
+
+  def order_params
+    params[:field] ||= "name"
+    params[:direction] ||= "asc"
+    "#{params[:field]} #{params[:direction]}"
   end
 end

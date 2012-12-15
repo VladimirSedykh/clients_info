@@ -25,4 +25,24 @@ module ApplicationHelper
       name + img
     end
   end
+
+  def order_mark(field)
+    if params[:field] == field
+      if params[:direction] == "asc"
+        "&#9650;"
+      else
+        "&#9660;"
+      end
+    else
+      "&#9658;"
+    end
+  end
+
+  def order_direction(field)
+    if params[:field] == field && params[:direction] == "asc"
+      "desc"
+    else
+      "asc"
+    end
+  end
 end
