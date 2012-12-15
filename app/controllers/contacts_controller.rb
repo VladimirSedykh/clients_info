@@ -2,6 +2,10 @@ class ContactsController < ApplicationController
   before_filter :find_client
   before_filter :find_contact, :only => [:show, :new, :edit, :update, :destroy]
 
+  def edit
+    detect_frame
+  end
+
   def create
     @contact = @client.contacts.build(params[:contact])
     if @contact.save

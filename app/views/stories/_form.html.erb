@@ -1,0 +1,15 @@
+<%= form_for [@client, @story], :html => {:class => "form-horizontal"} do |c| %>
+  <div class="pull-left">
+  <div class="control-group">
+    <%= c.label "Описание:", :class => "control-label", :for => "inputName" %>
+    <div class="controls">
+      <%= c.text_area :description, :rows => 7, :id => "inputName" %>
+    </div>
+  </div>
+</div>
+<div class="control-group unfloated">
+  <div class="controls">
+    <%= c.submit :class => "btn btn-primary btn-large"%>
+  </div>
+</div>
+<% end %>

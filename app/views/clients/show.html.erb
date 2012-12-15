@@ -1,13 +1,17 @@
-<%= link_to "Close", "#", :id => "close-frame", :onclick => "top.window.document.getElementById('main-frameset').rows = '100%'" %>
+<% if params[:frame] %>
+  <%= link_to "Закрыть", "#", :id => 'close-frame' %>
+<% end %>
 <div class="margined">
-  <h2><%= @client.name %></h2>
+  <% if params[:frame] %>
+    <h2><%= @client.name %></h2>
+  <% end %>
   <p> Адрес: <%= @client.address %> </p>
   <p> Область: <%= @client.state %> </p>
   <p> Вид Деятельности: <%= @client.activity %> </p>
   <p> Описание: <%= @client.description%> </p>
   <p> Дата создания: <%= @client.created_at.strftime("%m/%d/%Y %H:%M:%S")%> </p>
   <p> Дата последнего редактирования: <%= @client.updated_at.strftime("%m/%d/%Y %H:%M:%S")%> </p>
-  <%= link_to "Редактировать", edit_client_path(@client), :class => "btn" %>
+  <%= link_to "Редактировать", edit_client_path(@client), :class => "btn ajax-link" %>
 </div>
 
 <h3 class="margined">Contacts:</h3>
@@ -24,7 +28,7 @@
   <%= render @client.contacts.reverse %>
 </table>
 
-<a href="#create_contact" role="button" class="btn btn-primary btn-large margined" data-toggle="modal">Создать Контакт</a>
+<a href="#create_contact" role="button" class="btn btn-primary btn-large margined ajax-link" data-toggle="modal">Создать Контакт</a>
 
 <div id="create_contact" class="modal hide fade">
   <div class="modal-header">

@@ -8,4 +8,8 @@ module ApplicationHelper
   def search_value(params, param, key)
     session["params"].try(:[], param).try(:[], key)
   end
+
+  def frame
+    params[:frame] ? "iframe-link" : ""
+  end
 end

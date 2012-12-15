@@ -92,8 +92,23 @@ body {
   padding: 1px 5px;
 }
 
-#history-frame{
+.new-client {
+  width: 1200px;
+  padding: 20px 0 0 50px;
+}
+
+.frame-client-name{
   width: 100%;
-  height: 300px;
-  overflow: hidden;
+  white-space: nowrap;
+  text-align: left;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.toggle {
+  width: 100%;
+  height: 10px;
+  position: relative;
+  z-index: 100;
+}
 }

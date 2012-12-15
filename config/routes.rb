@@ -5,6 +5,7 @@ CliensInfo::Application.routes.draw do
       match "search"
     end
     resources :contacts
+    resources :stories
   end
   resources :activities
   resources :pages, :only => [:index]

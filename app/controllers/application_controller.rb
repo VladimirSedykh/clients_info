@@ -13,5 +13,12 @@ class ApplicationController < ActionController::Base
     session[:group]
   end
 
+
+  def detect_frame
+    unless params[:main]
+      render :layout => "history"
+    end
+  end
+
   WillPaginate.per_page = 25
 end

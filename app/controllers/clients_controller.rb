@@ -7,7 +7,15 @@ class ClientsController < ApplicationController
   def index
     @client = Client.new
     @clients = Client.by_group(current_group).paginate(:page => params[:page])
+  end
+
+  def new
+    @client = Client.new
     @contacts = Array.new(2) { @client.contacts.build }
+  end
+
+  def edit
+    detect_frame
   end
 
   def search
@@ -21,6 +29,7 @@ class ClientsController < ApplicationController
 
   def show
     @contact = Contact.new
+    detect_frame
   end
 
   def create

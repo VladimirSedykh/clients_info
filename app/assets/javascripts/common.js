@@ -31,14 +31,43 @@ $(document).ready(function(){
 
   $(".iframe-link").click(function(){
     var attr = $(this).attr("attr");
-    parent.frames[1].location.href = ("/clients/" + attr);
+    var bottomFrame = parent.frames[1];
+    var frameset = top.window.document.getElementById('main-frameset');
+    bottomFrame.location.href = ("/clients/" + attr + "?frame=true");
+    if (frameset.rows == "100%,0%"){
+      frameset.rows = "60%,40%";
+    }
   })
 
   $("#close-frame").click(function(){
-    top.window.document.getElementById('main-frameset').rows = '95%,*';
+    top.window.document.getElementById('main-frameset').rows = '100%,0%';
   })
 
-  $("a").not(".dropdown-toggle, .iframe-link, #close-frame").click(function(){
+  $("#open-frame").click(function(){
+    top.window.document.getElementById('main-frameset').rows = '60%,40%';
+  })
+
+  $.each($(".pagination a"), function(){
+    $(this).addClass("ajax-link");
+  })
+
+  $("a").not(".dropdown-toggle, .iframe-link, #close-frame, .inframe, .ajax-link").click(function(){
     top.location = $(this).attr("href");
+  })
+
+  $(".toggle").livequery("dblclick", function(){
+    var frameset = top.window.document.getElementById('main-frameset');
+    var frameHeight = parent.frames[1].window.innerHeight
+
+
+    console.log(frameset.rows);
+    console.log(frameHeight);
+    if (frameHeight > 60){
+      console.log(1);
+      frameset.rows = "100%,0%";
+    } else {
+      console.log(2);
+      frameset.rows = "60%,40%";
+    }
   })
 })

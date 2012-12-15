@@ -3,6 +3,7 @@
 class Client < ActiveRecord::Base
   attr_accessible :name, :description, :address, :activity, :role, :created_at, :updated_at, :state, :short_contacts
   has_many :contacts, :dependent => :destroy
+  has_many :stories, :dependent => :destroy
   validates_presence_of :name
   validate :check_name
 

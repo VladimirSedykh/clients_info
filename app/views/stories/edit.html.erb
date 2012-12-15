@@ -1,0 +1,6 @@
+<h4 class="margined">Редактировать контакт:</h4>
+<%= render "form" %>
+<%= link_to "Назад", client_stories_path(@client), :class => "margined btn"%>
+<br />
+<br />
+<%= link_to "Удалить", client_story_path(@client, @story), :method => :delete , :confirm => "Вы уверены?", :class => "margined" %>
