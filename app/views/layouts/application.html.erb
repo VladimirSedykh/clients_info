@@ -14,28 +14,34 @@
     <div class="nav-collapse collapse">
       <ul class="nav">
         <li class="divider-vertical"></li>
-        <li class="dropdown clients">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Категории<b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <% unless current_group == "client" %>
-            <li><%= link_to "Клиенты (#{Client.by_group("client").count})", change_group_clients_path(:group => "client") %></li>
-        <% end %>
-          <% unless current_group == "provider" %>
-            <li><%= link_to "Поставщики (#{Client.by_group("provider").count})", change_group_clients_path(:group => "provider") %></li>
-        <% end %>
-          <% unless current_group == "partner" %>
-            <li><%= link_to "Партнеры (#{Client.by_group("partner").count})", change_group_clients_path(:group => "partner") %></li>
-        <% end %>
-          <% unless current_group == "potential" %>
-            <li><%= link_to "Потенциальные (#{Client.by_group("potential").count})", change_group_clients_path(:group => "potential") %></li>
-        <% end %>
-        </ul>
+          <% if params[:controller] == "clients" && params[:action] != "new" %>
+            <li class="dropdown clients">
+          <% else %>
+            <li class="dropdown">
+          <% end %>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Категории<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <% unless current_group == "client" %>
+              <li><%= link_to "Клиенты (#{Client.by_group("client").count})", change_group_clients_path(:group => "client") %></li>
+          <% end %>
+            <% unless current_group == "provider" %>
+              <li><%= link_to "Поставщики (#{Client.by_group("provider").count})", change_group_clients_path(:group => "provider") %></li>
+          <% end %>
+            <% unless current_group == "partner" %>
+              <li><%= link_to "Партнеры (#{Client.by_group("partner").count})", change_group_clients_path(:group => "partner") %></li>
+          <% end %>
+            <% unless current_group == "potential" %>
+              <li><%= link_to "Потенциальные (#{Client.by_group("potential").count})", change_group_clients_path(:group => "potential") %></li>
+          <% end %>
+          </ul>
         </li>
         <li class="activities"> <%= link_to "Настройки", settings_path %></li>
         <% if params[:controller] == "clients" && %w(index create search).include?(params[:action]) %>
           <li> <a href="#search_client" role="button" class="ajax-link" data-toggle="modal">Поиск</a> </li>
           <li><%= link_to "Создать", new_client_path(@client) %></li>
-      <% end %>
+        <% elsif params[:controller] == "clients" && params[:action] == "new" %>
+          <li class="clients"><%= link_to "Создать", new_client_path(@client) %></li>
+        <% end %>
       </ul>
     </div>
   </div>

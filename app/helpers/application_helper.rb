@@ -49,4 +49,8 @@ module ApplicationHelper
   def short_date(date)
     date.strftime("%d %b, %H:%M")
   end
+
+  def history_active(action)
+    action == (params[:history_action] || "contacts") ? "active" : ""
+  end
 end
