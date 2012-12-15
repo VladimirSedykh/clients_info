@@ -45,4 +45,8 @@ module ApplicationHelper
       "asc"
     end
   end
+
+  def short_date(date)
+    date.strftime("%d %b, %H:%M")
+  end
 end

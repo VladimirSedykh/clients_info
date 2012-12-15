@@ -1,6 +1,7 @@
 class ContactsController < ApplicationController
   before_filter :find_client
-  before_filter :find_contact, :only => [:show, :new, :edit, :update, :destroy]
+  before_filter :find_contact, :only => [:show, :edit, :update, :destroy]
+  layout "history"
 
   def edit
     detect_frame

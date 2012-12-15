@@ -1,4 +1,4 @@
-<%= form_for [@client, @contact], :html => {:class => "form-horizontal"} do |c| %>
+<%= form_for [@client, @contact || Contact.new], :html => {:class => "form-horizontal"} do |c| %>
   <div class="pull-left">
   <div class="control-group">
     <%= c.label "Name:", :class => "control-label", :for => "inputName" %>

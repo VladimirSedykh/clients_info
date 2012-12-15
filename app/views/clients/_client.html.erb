@@ -4,5 +4,5 @@
   <td> <%= client.state %> </td>
   <td> <%= client.address %> </td>
   <td> <%= client.activity %> </td>
-  <td> <%= client.created_at.strftime("%m/%d %H:%M") %></td>
+  <td> <%= short_date client.created_at %></td>
 </tr>

@@ -59,14 +59,9 @@ $(document).ready(function(){
     var frameset = top.window.document.getElementById('main-frameset');
     var frameHeight = parent.frames[1].window.innerHeight
 
-
-    console.log(frameset.rows);
-    console.log(frameHeight);
     if (frameHeight > 60){
-      console.log(1);
       frameset.rows = "100%,0%";
     } else {
-      console.log(2);
       frameset.rows = "60%,40%";
     }
   })

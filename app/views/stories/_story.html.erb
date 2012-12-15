@@ -1,5 +1,5 @@
 <tr class="table-block">
-  <td><%= story.created_at%></td>
+  <td><%= short_date story.created_at %></td>
   <td><%= story.description %></td>
   <td><%= link_to "Редактировать", edit_client_story_path(@client, story), :class => frame %></td>
 </tr>
