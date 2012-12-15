@@ -5,8 +5,13 @@ class ClientsController < ApplicationController
   before_filter :init_client, :only => [:new, :create]
 
   def index
-    @client = Client.new
-    @clients = Client.by_group(current_group).order(order_params).paginate(:page => params[:page])
+    if params[:last_action] == "search"
+      params[:last_action] = "search"
+      @clients = Client.search(session[:params], current_group).order(order_params).paginate(:page => params[:page])
+    else
+      params[:last_action] = "index"
+      @clients = Client.by_group(current_group).order(order_params).paginate(:page => params[:page])
+    end
   end
 
   def new
@@ -19,12 +24,11 @@ class ClientsController < ApplicationController
   end
 
   def search
-    @client = Client.new
-    @contacts = Array.new(2) { @client.contacts.build }
+    params[:last_action] = "search"
     session[:params] = params if self.request.post?
     search_params = self.request.get? ? session[:params] : params
-    @clients = Client.search(search_params, current_group).paginate(:page => params[:page])
-    redirect_to pages_url(top=true)
+    @clients = Client.search(search_params, current_group).order(order_params).paginate(:page => params[:page])
+    render :index
   end
 
   def show

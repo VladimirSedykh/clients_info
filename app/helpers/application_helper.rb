@@ -29,12 +29,12 @@ module ApplicationHelper
   def order_mark(field)
     if params[:field] == field
       if params[:direction] == "asc"
-        "&#9650;"
-      else
         "&#9660;"
+      else
+        "&#9650;"
       end
     else
-      "&#9658;"
+      ""
     end
   end
 

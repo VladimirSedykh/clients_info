@@ -6,7 +6,7 @@
   </div>
 
 <div class="modal-body" id="search_form">
-  <%= form_for @client, :url => { :action => "search" },  :method => "post", :html => {:class => "client_edit_form form-horizontal"}  do |search| %>
+  <%= form_for Client.new, :url => { :action => "search" },  :method => "post", :html => {:class => "client_edit_form form-horizontal"}  do |search| %>
 
 
     <div class="pull-left">
