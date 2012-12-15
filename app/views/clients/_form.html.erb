@@ -9,12 +9,14 @@
     <% end %>
     </div>
   </div>
-  <div class="control-group">
-    <%= client.label "Категория:", :class => "control-label", :for => "inputState" %>
-    <div class="controls">
-      <%= client.select :role, Client::GROUPS.map{|k, v| [v, k]}, :id => "inputState" %>
+  <% if params[:action] == "edit" %>
+    <div class="control-group">
+      <%= client.label "Категория:", :class => "control-label", :for => "inputState" %>
+      <div class="controls">
+        <%= client.select :role, Client::GROUPS.map{|k, v| [v, k]}, :id => "inputState" %>
+      </div>
     </div>
-  </div>
+  <% end %>
   <div class="control-group">
     <%= client.label "Область:", :class => "control-label", :for => "inputState" %>
     <div class="controls">
@@ -43,7 +45,7 @@
 
 <% unless params[:action] == "edit" %>
   <%= client.hidden_field :role, :value => current_group %>
-<%= render "contacts" %>
+  <%= render "contacts" %>
 <% end %>
 
 <div class="control-group unfloated">

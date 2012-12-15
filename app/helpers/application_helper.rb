@@ -16,13 +16,13 @@ module ApplicationHelper
   def client_description
     name = content_tag(:span, @client.name)
     img = image_tag("edit.png", :class => "edit-client")
-    state = "#{@client.state} обл" if @client.state
+    state = "#{@client.state} обл" if @client.state.present?
     desc = [@client.activity, state, @client.address]
     desc = desc.compact.delete_if(&:blank?).join(", ")
     if desc.present?
       name + content_tag(:span, " (#{desc}) ", :class => "frame-client-description") +  img
     else
-      name + img
+      name + " " + img
     end
   end
 
