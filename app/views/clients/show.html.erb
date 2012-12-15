@@ -1,20 +1,3 @@
-<% if params[:frame] %>
-  <%= link_to "Закрыть", "#", :id => 'close-frame' %>
-<% end %>
-<div class="margined">
-  <% if params[:frame] %>
-    <h2><%= @client.name %></h2>
-  <% end %>
-  <p> Адрес: <%= @client.address %> </p>
-  <p> Область: <%= @client.state %> </p>
-  <p> Вид Деятельности: <%= @client.activity %> </p>
-  <p> Описание: <%= @client.description%> </p>
-  <p> Дата создания: <%= @client.created_at.strftime("%m/%d/%Y %H:%M:%S")%> </p>
-  <p> Дата последнего редактирования: <%= @client.updated_at.strftime("%m/%d/%Y %H:%M:%S")%> </p>
-  <%= link_to "Редактировать", edit_client_path(@client), :class => "btn ajax-link" %>
-</div>
-
-<h3 class="margined">Contacts:</h3>
 <table class="table table-striped table-condensed table-bordered">
   <tr class="text-info">
     <td><strong>Имя</strong></td>

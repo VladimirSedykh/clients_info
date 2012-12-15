@@ -35,7 +35,7 @@ $(document).ready(function(){
     var frameset = top.window.document.getElementById('main-frameset');
     bottomFrame.location.href = ("/clients/" + attr + "?frame=true");
     if (frameset.rows == "100%,0%"){
-      frameset.rows = "60%,40%";
+      frameset.rows = "55%,45%";
     }
   })
 

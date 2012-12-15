@@ -14,8 +14,10 @@
       <div class="toggle">
       </div>
       <ul class="nav">
+        <li> <%= link_to image_tag("close.png"), "#", :id => "close-frame", :style => "width:18px;" %> </li>
         <li class="activities"> <%= link_to "История", client_stories_path(@client), :class => "iframe-link" %></li>
-        <li><%= link_to @client.name, client_path(@client), :class => "frame-client-name iframe-link" %></li>
+        <li><%= link_to "Контакты", client_path(@client), :class => "iframe-link" %></li>
+        <li><%= link_to client_description, edit_client_path(@client), :class => "iframe-link frame-client" %></li>
       </ul>
     </div>
   </div>

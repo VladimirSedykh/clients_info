@@ -97,12 +97,17 @@ body {
   padding: 20px 0 0 50px;
 }
 
-.frame-client-name{
+.frame-client {
   width: 100%;
   white-space: nowrap;
   text-align: left;
   font-weight: bold;
   font-style: italic;
+}
+
+.frame-client .frame-client-description {
+  font-weight: normal;
+  font-size: 14px;
 }
 
 .toggle {
@@ -111,4 +116,7 @@ body {
   position: relative;
   z-index: 100;
 }
+
+.edit-client {
+  width: 18px;
 }

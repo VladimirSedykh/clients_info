@@ -18,16 +18,16 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Категории<b class="caret"></b></a>
         <ul class="dropdown-menu">
           <% unless current_group == "client" %>
-            <li><%= link_to "Клиенты", change_group_clients_path(:group => "client") %></li>
+            <li><%= link_to "Клиенты (#{Client.by_group("client").count})", change_group_clients_path(:group => "client") %></li>
         <% end %>
           <% unless current_group == "provider" %>
-            <li><%= link_to "Поставщики", change_group_clients_path(:group => "provider") %></li>
+            <li><%= link_to "Поставщики (#{Client.by_group("provider").count})", change_group_clients_path(:group => "provider") %></li>
         <% end %>
           <% unless current_group == "partner" %>
-            <li><%= link_to "Партнеры", change_group_clients_path(:group => "partner") %></li>
+            <li><%= link_to "Партнеры (#{Client.by_group("partner").count})", change_group_clients_path(:group => "partner") %></li>
         <% end %>
           <% unless current_group == "potential" %>
-            <li><%= link_to "Потенциальные", change_group_clients_path(:group => "potential") %></li>
+            <li><%= link_to "Потенциальные (#{Client.by_group("potential").count})", change_group_clients_path(:group => "potential") %></li>
         <% end %>
         </ul>
         </li>

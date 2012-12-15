@@ -1,8 +1,8 @@
 <tr class="table-block">
-  <td style="font-size: 15px;"> <%= link_to client.name, client_path(client), :class => "link-client" %></td>
+  <td style="font-size: 15px;"> <%= link_to client.name, "#", :attr => client.id, :class => "iframe-link" %></td>
   <td> <%= client.short_contacts %> </td>
   <td> <%= client.state %> </td>
   <td> <%= client.address %> </td>
   <td> <%= client.activity %> </td>
-  <td style="font-size: 15px;"><%= link_to client.created_at.strftime("%m/%d %H:%M"), "#", :attr => client.id, :class => "iframe-link" %></td>
+  <td> <%= client.created_at.strftime("%m/%d %H:%M") %></td>
 </tr>
