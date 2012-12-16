@@ -134,3 +134,7 @@ form {
   border-left: 1px solid #E8E8E8;
   margin: 0px;
 }
+
+td.clickable-cell:hover {
+  cursor: pointer;
+}

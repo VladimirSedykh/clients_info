@@ -29,8 +29,9 @@ $(document).ready(function(){
 
   $("#clean_search_form").live("click", function(){$("#search_form.modal-body").find("input, select, textarea").not(".btn").val("")});
 
-  $(".iframe-link").click(function(){
-    var attr = $(this).attr("attr");
+  $(".clickable-cell").click(function(){
+    var link = $(this).find('.iframe-link');
+    var attr = link.attr("attr");
     var bottomFrame = parent.frames[1];
     var frameset = top.window.document.getElementById('main-frameset');
     bottomFrame.location.href = ("/clients/" + attr + "?frame=true");
