@@ -10,9 +10,9 @@
 <body>
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
-    <%= link_to current_group_name, root_path, :class => "brand"  %>
     <div class="nav-collapse collapse">
       <ul class="nav">
+        <li class='main-menu-item'><%= link_to current_group_name, root_path %></li>
         <li class="divider-vertical"></li>
           <% if params[:controller] == "clients" && params[:action] != "new" %>
             <li class="dropdown clients">

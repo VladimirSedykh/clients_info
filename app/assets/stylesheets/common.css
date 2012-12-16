@@ -138,3 +138,15 @@ form {
 td.clickable-cell:hover {
   cursor: pointer;
 }
+
+ul.nav {
+  white-space: nowrap;
+}
+
+.navbar-fixed-top .navbar-inner, .navbar-fixed-bottom .navbar-inner {
+  padding: 0px;
+}
+
+.main-menu-item {
+  font-weight: bold;
+}
