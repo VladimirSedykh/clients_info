@@ -1,5 +1,7 @@
 #!/bin/env ruby
 # encoding: utf-8
+require 'will_paginate/array'
+
 class ClientsController < ApplicationController
   before_filter :find_client, :only => [:show, :edit, :update, :destroy]
   before_filter :init_client, :only => [:new, :create]

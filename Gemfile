@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
+gem 'mysql2'
+gem 'yaml_db'
 gem 'debugger'
 gem 'will_paginate', '~> 3.0'
 

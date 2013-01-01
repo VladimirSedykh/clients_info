@@ -8,7 +8,9 @@ class Client < ActiveRecord::Base
   validate :check_name
 
   GROUPS = { "client" => "Клиенты", "provider" => "Поставщики", "partner" => "Партнеры", "potential" => "Потенциальные" }
+  SEARCHABLE_FIELDS = %w[name address state activity description]
   scope :by_group, lambda {|group| where(:role => group)}
+  scope :by_all_conditions, lambda {|name| joins("LEFT JOIN contacts ON clients.id = contacts.client_id").where(Client.by_all_fields(name))}
 
   def contacts_for_update
     contact = contacts.first
@@ -24,6 +26,7 @@ class Client < ActiveRecord::Base
   end
 
   def self.search(params, group)
+    return Client.by_group(group).by_all_conditions(params[:name]).group("clients.id") if params[:by_all] == "true"
     clients =
       if params[:client].present?
         Client.by_group(group).where(Client.search_params(params, :client))
@@ -36,6 +39,14 @@ class Client < ActiveRecord::Base
       clients = clients.joins(:contacts).where(conditions)
     end
     return clients
+  end
+
+  def self.by_all_fields(name)
+    conditions = []
+    %w[client contact].each do |table|
+      conditions << table.classify.constantize::SEARCHABLE_FIELDS.map{|f| "#{table.pluralize}.#{f} like '%#{name}%'"}
+    end
+    conditions = conditions.flatten.join(" OR ")
   end
 
   private

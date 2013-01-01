@@ -43,6 +43,11 @@
           <li class="clients"><%= link_to "Создать", new_client_path(@client) %></li>
         <% end %>
       </ul>
+
+      <%= form_for search_clients_path, :url => { :action => "search" },  :method => "post" do |f| %>
+        <%= text_field_tag :name %>
+        <%= hidden_field "", :by_all, :value => true %>
+      <% end %>
     </div>
   </div>
 </div>

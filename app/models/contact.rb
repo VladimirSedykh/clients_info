@@ -6,6 +6,7 @@ class Contact < ActiveRecord::Base
 
   validate :check_attributes
 
+  SEARCHABLE_FIELDS = %w[name cellphone phone email icq skype]
   private
 
   def check_attributes
