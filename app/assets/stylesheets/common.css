@@ -1,6 +1,7 @@
 body {
   background: #E4E6E5;
   background: #E8EDF5;
+  padding: 20px 0 0;
 }
 
 .brand{
@@ -59,8 +60,8 @@ body {
   width: 160px;
 }
 
-.modal.hide.fade.container.search-form {
-  width: 50%;
+.search-form {
+ width: 670px;
 }
 
 .btn-group.margined.clients-group {
@@ -126,7 +127,7 @@ body {
 }
 
 form {
-  margin-top: 10px;
+  margin: 10px 0 0;
 }
 
 .history-block .divider-vertical {
@@ -149,4 +150,45 @@ ul.nav {
 
 .main-menu-item {
   font-weight: bold;
+}
+
+.global-search {
+   margin: 0;
+}
+
+.global-search #name {
+    margin: 5px 0 0 0;
+}
+
+#search_client {
+    display: none;
+    border: 1px solid #005580;
+    padding: 10px 10px 4px 10px;
+    margin: 10px;
+    border-radius: 8px;
+}
+
+#search_form .form-horizontal .control-group {
+    margin-bottom: 5px;
+}
+
+#search_form input[type="text"],
+#search_form select,
+#search_form textarea {
+    padding: 0;
+    width: 209px;
+}
+
+#search_form select,
+#search_form input[type="file"] {
+    height: 23px;
+    line-height: 18px;
+}
+
+#search_form .form-horizontal .control-label {
+    padding-top: 0;
+}
+
+#search_form label {
+    color: #005580;
 }

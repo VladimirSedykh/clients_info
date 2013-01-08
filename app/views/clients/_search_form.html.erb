@@ -1,11 +1,6 @@
-<div id="search_client" class="modal hide fade container search-form">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3>Поиск:</h3>
+<div id="search_client" class="search-form">
     <%= link_to "Отчистить", "#", :id => "clean_search_form", :class => "ajax-link" %>
-  </div>
-
-<div class="modal-body" id="search_form">
+<div id="search_form">
   <%= form_for Client.new, :url => { :action => "search" },  :method => "post", :html => {:class => "client_edit_form form-horizontal"}  do |search| %>
 
 
@@ -34,12 +29,7 @@
         <%= search.select :activity, Activity.all.map(&:name), { :selected => search_value(session["params"], "client", "activity"), :include_blank => true }, :id => "inputActivity" %>
       </div>
     </div>
-    <div class="control-group">
-      <%= search.label "Описание:", :class => "control-label", :for => "inputDescription" %>
-      <div class="controls">
-        <%= search.text_area :description, :value => search_value(session["params"], "client", "description"), :rows => 3, :id => "inputDescription" %>
-      </div>
-    </div>
+
     </div>
 
 
@@ -79,7 +69,7 @@
 
   <div class="control-group unfloated">
     <div class="controls">
-      <%= search.submit "Поиск", :class => "btn btn-primary btn-large"%>
+      <%= search.submit "Поиск", :class => "btn btn-primary"%>
     </div>
   </div>
 <% end %>

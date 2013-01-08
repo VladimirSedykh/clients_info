@@ -58,7 +58,7 @@ $(document).ready(function(){
 
   $(".toggle").livequery("dblclick", function(){
     var frameset = top.window.document.getElementById('main-frameset');
-    var frameHeight = parent.frames[1].window.innerHeight
+    var frameHeight = parent.frames[1].window.innerHeight;
 
     if (frameHeight > 60){
       frameset.rows = "100%,0%";
@@ -66,4 +66,9 @@ $(document).ready(function(){
       frameset.rows = "60%,40%";
     }
   })
+
+  $("#toggle-search").click(function(){
+     $("#search_client").toggle();
+  });
+
 })
