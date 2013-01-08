@@ -44,7 +44,7 @@ class Client < ActiveRecord::Base
   def self.by_all_fields(name)
     conditions = []
     %w[client contact].each do |table|
-      conditions << table.classify.constantize::SEARCHABLE_FIELDS.map{|f| "#{table.pluralize}.#{f} like '%#{name}%'"}
+      conditions << table.classify.constantize::SEARCHABLE_FIELDS.map{|f| "lower(#{table.pluralize}.#{f}) like lower('%#{name}%')"}
     end
     conditions = conditions.flatten.join(" OR ")
   end
@@ -56,12 +56,12 @@ class Client < ActiveRecord::Base
     conditions = []
     search_params.each do |key, value|
       if param == :client
-        conditions << ("clients." + key + " like \"%" + value + "%\"")
+        conditions << ("lower(clients." + key + ") like lower('%" + value + "%')")
       elsif param == :contact
         if key == "phone"
-          conditions << (" (contacts.phone like \"%" + value + "%\" OR contacts.cellphone like \"%" + value + "%\") ")
+          conditions << (" (lower(contacts.phone) like lower('%" + value + "%') OR lower(contacts.cellphone) like lower('%" + value + "%')) ")
         else
-          conditions << ("contacts." + key + " like \"%" + value + "%\"")
+          conditions << ("lower(contacts." + key + ") like lower('%" + value + "%')")
         end
       end
     end
