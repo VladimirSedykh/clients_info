@@ -20,5 +20,5 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  WillPaginate.per_page = 2
+  WillPaginate.per_page = 25
 end
