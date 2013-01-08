@@ -7,6 +7,8 @@ class ClientsController < ApplicationController
   before_filter :init_client, :only => [:new, :create]
 
   def index
+    @client = Client.new
+    @contacts = Array.new(2) { @client.contacts.build }
     if params[:last_action] == "search"
       params[:last_action] = "search"
       @clients = Client.search(session[:params], current_group).order(order_params).paginate(:page => params[:page])
@@ -26,6 +28,8 @@ class ClientsController < ApplicationController
   end
 
   def search
+    @client = Client.new
+    @contacts = Array.new(2) { @client.contacts.build }
     params[:last_action] = "search"
     session[:params] = params if self.request.post?
     search_params = self.request.get? ? session[:params] : params

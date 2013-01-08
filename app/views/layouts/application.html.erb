@@ -38,7 +38,7 @@
         <li class="activities"> <%= link_to "Настройки", settings_path %></li>
         <% if params[:controller] == "clients" && %w(index create search).include?(params[:action]) %>
           <li> <a href="#" role="button" id="toggle-search" class="ajax-link" data-toggle="modal">Поиск</a> </li>
-          <li><%= link_to "Создать", new_client_path(@client) %></li>
+          <li> <a href="#" role="button" id="toggle-create" class="ajax-link" data-toggle="modal">Создать</a> </li>
         <% elsif params[:controller] == "clients" && params[:action] == "new" %>
           <li class="clients"><%= link_to "Создать", new_client_path(@client) %></li>
         <% end %>

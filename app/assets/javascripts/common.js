@@ -71,4 +71,8 @@ $(document).ready(function(){
      $("#search_client").toggle();
   });
 
+  $("#toggle-create").click(function(){
+     $(".client-new").toggle();
+  });
+
 })

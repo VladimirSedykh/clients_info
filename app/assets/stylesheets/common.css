@@ -47,7 +47,6 @@ body {
 .error {
   color: red;
   width: 1px;
-  position: absolute;
   white-space: nowrap;
 }
 
@@ -61,7 +60,7 @@ body {
 }
 
 .search-form {
- width: 670px;
+ width: 950px;
 }
 
 .btn-group.margined.clients-group {
@@ -160,7 +159,7 @@ ul.nav {
     margin: 5px 0 0 0;
 }
 
-#search_client {
+.hidden-form {
     display: none;
     border: 1px solid #005580;
     padding: 10px 10px 4px 10px;

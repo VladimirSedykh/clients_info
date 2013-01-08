@@ -1,34 +1,32 @@
-<div id="search_client" class="search-form">
-    <%= link_to "Отчистить", "#", :id => "clean_search_form", :class => "ajax-link" %>
-<div id="search_form">
-  <%= form_for Client.new, :url => { :action => "search" },  :method => "post", :html => {:class => "client_edit_form form-horizontal"}  do |search| %>
-
-
-    <div class="pull-left">
-    <div class="control-group">
-      <%= search.label "Название:", :class => "control-label", :for => "searchName" %>
-      <div class="controls">
-        <%= search.text_field :name, :value => search_value(session["params"], "client", "name"), :id => "searchName" %>
+<div id="search_client" class="search-form hidden-form">
+  <%= link_to "Отчистить", "#", :id => "clean_search_form", :class => "ajax-link" %>
+  <div id="search_form">
+    <%= form_for Client.new, :url => { :action => "search" },  :method => "post", :html => {:class => "client_edit_form form-horizontal"}  do |search| %>
+      <div class="pull-left">
+      <div class="control-group">
+        <%= search.label "Название:", :class => "control-label", :for => "searchName" %>
+        <div class="controls">
+          <%= search.text_field :name, :value => search_value(session["params"], "client", "name"), :id => "searchName" %>
+        </div>
       </div>
-    </div>
-    <div class="control-group">
-      <%= search.label "Область:", :class => "control-label", :for => "inputState" %>
-      <div class="controls">
-        <%= search.select :state, State.all.map(&:name), { :selected => search_value(session["params"], "client", "state"), :include_blank => true }, :id => "inputState" %>
+      <div class="control-group">
+        <%= search.label "Область:", :class => "control-label", :for => "inputState" %>
+        <div class="controls">
+          <%= search.select :state, State.all.map(&:name), { :selected => search_value(session["params"], "client", "state"), :include_blank => true }, :id => "inputState" %>
+        </div>
       </div>
-    </div>
-    <div class="control-group">
-      <%= search.label "Адрес:", :class => "control-label", :for => "inputAddress" %>
-      <div class="controls">
-        <%= search.text_area :address, :value => search_value(session["params"], "client", "address"), :rows => 3, :id => "inputAddress" %>
+      <div class="control-group">
+        <%= search.label "Адрес:", :class => "control-label", :for => "inputAddress" %>
+        <div class="controls">
+          <%= search.text_area :address, :value => search_value(session["params"], "client", "address"), :rows => 3, :id => "inputAddress" %>
+        </div>
       </div>
-    </div>
-    <div class="control-group">
-      <%= search.label "Деятельность:", :class => "control-label", :for => "inputActivity" %>
-      <div class="controls">
-        <%= search.select :activity, Activity.all.map(&:name), { :selected => search_value(session["params"], "client", "activity"), :include_blank => true }, :id => "inputActivity" %>
+      <div class="control-group">
+        <%= search.label "Деятельность:", :class => "control-label", :for => "inputActivity" %>
+        <div class="controls">
+          <%= search.select :activity, Activity.all.map(&:name), { :selected => search_value(session["params"], "client", "activity"), :include_blank => true }, :id => "inputActivity" %>
+        </div>
       </div>
-    </div>
 
     </div>
 
@@ -67,11 +65,11 @@
     </span>
 
 
-  <div class="control-group unfloated">
-    <div class="controls">
-      <%= search.submit "Поиск", :class => "btn btn-primary"%>
+    <div class="control-group unfloated">
+      <div class="controls">
+        <%= search.submit "Поиск", :class => "btn btn-primary"%>
+      </div>
     </div>
+  <% end %>
   </div>
-<% end %>
-</div>
 </div>

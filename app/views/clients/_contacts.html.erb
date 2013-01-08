@@ -1,6 +1,6 @@
 <% @contacts.each_with_index do |contact, index| %>
   <%= fields_for "contacts[]", contact do |c| %>
-    <div class="pull-left">
+    <div class="pull-left client_edit_form form-horizontal">
       <div class="control-group">
         <%= c.label "Имя:", :class => "control-label", :for => "inputName#{index}" %>
         <div class="controls">
