@@ -1,7 +1,6 @@
 <% @client.errors.full_messages.each do |msg| %>
   <span class="error"><%= msg %></span>
 <% end %>
-<div id="search_client" class="search-form hidden-form client-new">
 <%= form_for @client do |client| %>
   <div id="search_form">
   <div class="pull-left client_edit_form form-horizontal">
@@ -57,4 +56,3 @@
   </div>
 </div>
 <% end %>
-</div>

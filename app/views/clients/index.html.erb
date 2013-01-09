@@ -1,5 +1,7 @@
 <%= render "search_form" %>
-<%= render "form" %>
+<div id="search_client" class="search-form hidden-form client-new">
+  <%= render "form" %>
+</div>
 
 <div class="pagination digg_pagination">
   <%= will_paginate @clients %>

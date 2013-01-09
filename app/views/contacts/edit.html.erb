@@ -1,6 +1,4 @@
 <h4 class="margined">Редактировать контакт:</h4>
+<br />
 <%= render "form" %>
-<%= link_to "Назад", client_path(@client), :class => "margined btn"%>
-<br />
-<br />
 <%= link_to "Удалить", client_contact_path(@client, @contact), :method => :delete , :confirm => "Вы уверены?", :class => "margined" %>
