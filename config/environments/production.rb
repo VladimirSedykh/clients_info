@@ -1,3 +1,5 @@
+require 'digest/md5'
+
 CliensInfo::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -64,4 +66,8 @@ CliensInfo::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  config.middleware.insert_after(::Rack::Lock, "::Rack::Auth::Basic", "Authenticaton") do |u, p|
+    [u, p].map{|x| Digest::MD5.hexdigest(x)} == ['a0961a74f6a923173365610e2e7321ef', '5106d738d8f130deb67767bd8f211f56']
+  end
 end
