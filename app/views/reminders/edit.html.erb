@@ -1,0 +1,6 @@
+<h4 class="margined">Редактировать:</h4>
+<%= render "form" %>
+<%= link_to "Назад", client_reminders_path(@client), :class => "margined btn"%>
+<br />
+<br />
+<%= link_to "Удалить", client_reminder_path(@client, @reminder), :method => :delete , :confirm => "Вы уверены?", :class => "margined" %>

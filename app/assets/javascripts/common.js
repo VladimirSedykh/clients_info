@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  setTimeout('$("#inputScheduledTime").datetimepicker();', 500)
   var controller = $(".controller").val();
   $("." + controller).addClass("active");
 

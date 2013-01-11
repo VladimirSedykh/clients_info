@@ -1,0 +1,5 @@
+<tr class="table-block">
+  <td><%= short_date reminder.created_at %></td>
+  <td><%= reminder.description %></td>
+  <td><%= link_to "Редактировать", edit_client_reminder_path(@client, reminder), :class => frame %></td>
+</tr>

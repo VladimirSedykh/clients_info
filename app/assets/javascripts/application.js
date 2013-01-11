@@ -12,4 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require jquery-1.8.2.min.js
+//= require jquery-ui.min.js
+//= require jquery-ui-sliderAccess.js
+//= require jquery-ui-timepicker-addon.js
+//= require bootstrap.min.js
+//= require jquery.livequery.js
+//= require jquery.maskedinput-1.3.min.js 
+//= require common.js

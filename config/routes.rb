@@ -6,10 +6,10 @@ CliensInfo::Application.routes.draw do
     end
     resources :contacts
     resources :stories
+    resources :reminders
   end
   resources :activities
   resources :pages, :only => [:index]
-  match 'settings' => 'activities#index'
 
   root :to => "pages#index"
   # The priority is based upon order of creation:
