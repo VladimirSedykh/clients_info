@@ -17,7 +17,7 @@ class AllRemindersController < ApplicationController
         if ["past_reminders", "today_reminders", "future_reminders", "tomorrow_reminders"].include?(params[:type])
           instance_variable_get("@" + params[:type])
         else
-          Reminder.order("closed DESC, updated_at DESC, scheduled_time DESC")
+          Reminder.all
         end
       end
 

@@ -8,7 +8,7 @@
       <td><strong>Дата создания</strong></td>
       <td></td>
     </tr>
-    <% @reminders.reverse.each do |reminder| %>
+    <% @reminders.each do |reminder| %>
       <%= render :partial => "single_reminder", :locals => {:reminder => reminder} %>
   <% end %>
   </table>

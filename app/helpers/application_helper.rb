@@ -50,8 +50,8 @@ module ApplicationHelper
     date.strftime("%d %b, %H:%M")
   end
 
-  def history_active(action)
-    action == (params[:history_action] || "contacts") ? "active" : ""
+  def history_active(*name)
+    name.include?( params[:controller] ) ? "active" : ""
   end
 
   def past_reminders_count

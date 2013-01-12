@@ -8,5 +8,5 @@
   <td><%= reminder.client.name %></td>
   <td><%= reminder.description %></td>
   <td><%= short_date reminder.created_at %></td>
-  <td><%= link_to "Редактировать", edit_client_reminder_path(reminder.client, reminder), :class => frame %></td>
+  <td><%= link_to "Редактировать", edit_client_reminder_path(reminder.client, reminder) %></td>
 </tr>

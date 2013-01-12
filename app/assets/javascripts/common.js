@@ -58,7 +58,7 @@ $(document).ready(function(){
     $(this).addClass("ajax-link");
   })
 
-  $("a").not(".dropdown-toggle, .iframe-link, #close-frame, .inframe, .ajax-link").click(function(){
+  $("a").not(".dropdown-toggle, .iframe-link, #close-frame, .inframe, .ajax-link, .history-content a").click(function(){
     top.location = $(this).attr("href");
   })
 

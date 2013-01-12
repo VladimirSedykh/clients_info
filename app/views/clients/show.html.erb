@@ -15,10 +15,7 @@
 </table>
 
 <div id="create_contact" class="modal hide fade">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3>Создать Контакт:</h3>
-  </div>
+  <h3>Создать Контакт:</h3>
   <div class="modal-body">
     <% @contact.errors.full_messages.each do |error| %>
       <p><%= error %></p>

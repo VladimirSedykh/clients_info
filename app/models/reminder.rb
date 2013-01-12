@@ -6,6 +6,7 @@ class Reminder < ActiveRecord::Base
 
   scope :not_closed, where("(closed = false OR closed IS NULL)")
   scope :not_showed, where("(showed = false OR showed IS NULL)")
+  default_scope order("closed, scheduled_time, created_at")
 
   def full_info
     "Дата: #{scheduled_time.strftime('%d %b, %H:%M')} \n" + 
