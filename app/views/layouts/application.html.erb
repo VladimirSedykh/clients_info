@@ -35,8 +35,8 @@
           <% end %>
           </ul>
         </li>
-        <li class="activities"> <%= link_to "Настройки", activities_path %></li>
-        <li class="reminders"> <%= link_to "Напоминания", all_reminders_path %></li>
+        <li class="activities <%= history_active("activities") %>"> <%= link_to "Настройки", activities_path %></li>
+        <li class="reminders <%= history_active("all_reminders") %> "> <%= link_to "Напоминания", all_reminders_path %></li>
         <% if params[:controller] == "clients" && %w(index create search).include?(params[:action]) %>
           <li> <a href="#" role="button" id="toggle-search" class="ajax-link" data-toggle="modal">Поиск</a> </li>
           <li> <a href="#" role="button" id="toggle-create" class="ajax-link" data-toggle="modal">Создать</a> </li>
