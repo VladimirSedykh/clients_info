@@ -46,9 +46,11 @@ ActiveRecord::Schema.define(:version => 20130111194613) do
   create_table "reminders", :force => true do |t|
     t.string   "description"
     t.integer  "client_id"
+    t.boolean  "closed"
+    t.boolean  "showed"
+    t.datetime "scheduled_time"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.datetime "scheduled_time"
   end
 
   create_table "states", :force => true do |t|

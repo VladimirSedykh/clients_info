@@ -1,7 +1,6 @@
 <tr class="table-block">
   <td>
-    <%= check_box_tag :closed, reminder.id, reminder.closed, :class => "reminder_checkbox" %>
-    <%= hidden_field_tag :client_id, reminder.client.id %>
+    <%= check_box_tag :closed, reminder.id, reminder.closed, :class => "reminder_checkbox single_record" %>
   </td>
   <td><%= short_date reminder.created_at %></td>
   <td><%= short_date reminder.scheduled_time %></td>

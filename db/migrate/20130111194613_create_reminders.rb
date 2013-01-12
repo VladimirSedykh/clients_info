@@ -3,8 +3,10 @@ class CreateReminders < ActiveRecord::Migration
     create_table :reminders do |t|
       t.string :description
       t.integer :client_id
-      t.timestamps
+      t.boolean :closed
+      t.boolean :showed
       t.datetime :scheduled_time
+      t.timestamps
     end
   end
 

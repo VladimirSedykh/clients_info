@@ -1,7 +1,7 @@
 #!/bin/env ruby
 # encoding: utf-8
 class Reminder < ActiveRecord::Base
-  attr_accessible :description, :scheduled_time
+  attr_accessible :description, :scheduled_time, :closed, :showed
   belongs_to :client
 
   validate :check_attributes

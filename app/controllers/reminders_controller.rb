@@ -1,6 +1,11 @@
 class RemindersController < ApplicationController
   before_filter :find_client
   before_filter :find_reminder, :only => [:show, :edit, :update, :destroy]
+  layout "history"
+
+  def index
+    @reminders = @client.reminders.unscoped.order("reminders.closed DESC, reminders.updated_at DESC, reminders.scheduled_time DESC")
+  end
 
   def new
     @reminder = @client.reminders.build
@@ -16,12 +21,23 @@ class RemindersController < ApplicationController
   end
 
   def update
-    if @reminder.update_attributes(params[:reminder])
-      redirect_to client_reminders_path(@client)
-    else
-      render "edit"
+    respond_to do |format|
+      format.html do
+        if @reminder.update_attributes(params[:reminder])
+          redirect_to client_reminders_path(@client)
+        else
+          render "edit"
+        end
+      end
+
+      format.json do
+        used = params[:closed] == "checked"
+        Reminder.find_by_id(params[:id]).try(:update_attributes, {:closed => used, :showed => used})
+        render :json=> {}
+      end
     end
   end
+
 
   def destroy
     @reminder.destroy

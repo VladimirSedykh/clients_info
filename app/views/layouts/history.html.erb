@@ -14,6 +14,7 @@
         <li> <%= link_to image_tag("close.png"), "#", :id => "close-frame", :style => "width:18px;" %> </li>
         <li class="<%= history_active("contacts") %>" ><%= link_to "Контакты", client_path(@client, :history_action => "contacts"), :class => "iframe-link" %></li>
         <li class="<%= history_active("stories") %>"> <%= link_to "История", client_stories_path(@client, :history_action => "stories"), :class => "iframe-link" %></li>
+        <li class="<%= history_active("reminders") %>"> <%= link_to "Напоминания", client_reminders_path(@client, :history_action => "reminders"), :class => "iframe-link" %></li>
         <li class="divider-vertical"></li>
         <li class="<%= history_active("show_contact") %>"><%= link_to client_description, edit_client_path(@client, :history_action => "show_contact"), :class => "iframe-link frame-client" %></li>
       </ul>

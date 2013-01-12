@@ -1,5 +1,10 @@
 $(document).ready(function(){
-  setTimeout('$("#inputScheduledTime").datetimepicker();', 500)
+  reminderTimer();
+  $("#inputScheduledTime").datetimepicker(
+    {dateFormat: "yy-mm-dd",
+     altFieldTimeOnly: false
+    }
+  );
   var controller = $(".controller").val();
   $("." + controller).addClass("active");
 
@@ -76,4 +81,36 @@ $(document).ready(function(){
      $(".client-new").toggle();
   });
 
+  $(".reminder_checkbox").change(function(){
+    var single = $(this).hasClass("single_record");
+    if(single){
+      url = "/all_reminders/" + $(this).val();
+    }
+    else{
+      url = "reminders/" + $(this).val();
+    }
+
+    $.ajax({
+      type: "PUT",
+      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+      url: url,
+      data: { closed: $(this).attr('checked'), id: $(this).val() },
+      dataType: "json"
+    });
+  })
+
+  function reminderTimer(){
+    setInterval(updateReminder, 3000);
+  };
+
+  function updateReminder(){
+    $.ajax({
+      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+      url: "/all_reminders",
+      success: function(data){
+        console.log(data);
+      },
+      dataType: "json"
+    });
+  }
 })

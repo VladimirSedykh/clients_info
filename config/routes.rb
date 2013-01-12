@@ -8,6 +8,7 @@ CliensInfo::Application.routes.draw do
     resources :stories
     resources :reminders
   end
+  resources :all_reminders
   resources :activities
   resources :pages, :only => [:index]
 
