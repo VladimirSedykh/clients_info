@@ -63,4 +63,8 @@ module ApplicationHelper
     db_time = Time.current.in_time_zone('EET')
     Reminder.not_closed.where("scheduled_time <= '#{db_time.strftime("%Y-%m-%d 23:59:59")}'").count
   end
+
+  def scheduled_time_value
+    @reminder.scheduled_time.try(:strftime, "%Y-%m-%d %H:%M") || (Time.now + 3.hours).strftime("%Y-%m-%d %H:00")
+  end
 end
