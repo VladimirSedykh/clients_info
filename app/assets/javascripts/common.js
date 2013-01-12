@@ -100,6 +100,7 @@ $(document).ready(function(){
   })
 
   function reminderTimer(){
+    updateReminder();
     setInterval(updateReminder, 120000);
   };
 
