@@ -1,10 +1,11 @@
 <%= link_to "Создать Запись", new_client_reminder_path(@client), :class => "btn ajax-link" %>
 <table class="table table-striped table-condensed table-bordered">
   <tr class="text-info">
-    <td><strong>Дата создания</strong></td>
+    <td><strong>Выполнено</strong></td>
     <td><strong>Дата напоминания</strong></td>
+    <td><strong>Клиент</strong></td>
     <td><strong>Описание</strong></td>
-    <td></td>
+    <td><strong>Дата создания</strong></td>
     <td></td>
   </tr>
   <%= render @reminders.reverse %>

@@ -8,7 +8,11 @@ CliensInfo::Application.routes.draw do
     resources :stories
     resources :reminders
   end
-  resources :all_reminders
+  resources :all_reminders do
+    collection do
+      post :update_viewed
+    end
+  end
   resources :activities
   resources :pages, :only => [:index]
 

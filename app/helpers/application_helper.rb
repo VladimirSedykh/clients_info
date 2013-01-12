@@ -53,4 +53,14 @@ module ApplicationHelper
   def history_active(action)
     action == (params[:history_action] || "contacts") ? "active" : ""
   end
+
+  def past_reminders_count
+    db_time = Time.current.in_time_zone('EET')
+    Reminder.not_closed.where("scheduled_time <= '#{db_time.strftime("%Y-%m-%d %H:%M:%S")}'").count
+  end
+
+  def today_reminders_count
+    db_time = Time.current.in_time_zone('EET')
+    Reminder.not_closed.where("scheduled_time <= '#{db_time.strftime("%Y-%m-%d 23:59:59")}'").count
+  end
 end

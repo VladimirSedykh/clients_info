@@ -4,12 +4,12 @@ class Reminder < ActiveRecord::Base
   attr_accessible :description, :scheduled_time, :closed, :showed
   belongs_to :client
 
-  validate :check_attributes
+  scope :not_closed, where("(closed = false OR closed IS NULL)")
+  scope :not_showed, where("(showed = false OR showed IS NULL)")
 
-  private
-
-  def check_attributes
-    attrs = self.attributes.delete_if{|k,v| %w(id client_id created_at updated_at).include?(k) || v.blank? }
-    errors[:base] << "Ни одно поле не заполнено." if attrs.empty?
+  def full_info
+    "Дата: #{scheduled_time.strftime('%d %b, %H:%M')} \n" + 
+    "Клиент: #{client.name} \n" +
+    "Описание: #{description}"
   end
 end

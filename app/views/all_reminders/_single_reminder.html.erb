@@ -2,8 +2,9 @@
   <td>
     <%= check_box_tag :closed, reminder.id, reminder.closed, :class => "reminder_checkbox single_record" %>
   </td>
-  <td><%= short_date reminder.created_at %></td>
   <td><%= short_date reminder.scheduled_time %></td>
+  <td><%= reminder.client.name %></td>
   <td><%= reminder.description %></td>
-  <td><%= link_to "Редактировать", edit_client_reminder_path(reminder.client, reminder), :class => frame %></td>
+  <td><%= short_date reminder.created_at %></td>
+  <td><%= link_to "Редактировать", edit_all_reminder_path(reminder), :class => frame %></td>
 </tr>

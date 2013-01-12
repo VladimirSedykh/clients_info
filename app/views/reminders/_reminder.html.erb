@@ -1,10 +1,12 @@
+
 <tr class="table-block">
   <td>
     <%= check_box_tag :closed, reminder.id, reminder.closed, :class => "reminder_checkbox" %>
     <%= hidden_field_tag :client_id, reminder.client.id %>
   </td>
-  <td><%= short_date reminder.created_at %></td>
   <td><%= short_date reminder.scheduled_time %></td>
+  <td><%= reminder.client.name %></td>
   <td><%= reminder.description %></td>
+  <td><%= short_date reminder.created_at %></td>
   <td><%= link_to "Редактировать", edit_client_reminder_path(reminder.client, reminder), :class => frame %></td>
 </tr>

@@ -1,5 +1,5 @@
-<%= link_to "Назад", client_reminders_path(@client, :history_action => "reminders"), :class => "iframe-link" %>
-<%= form_for [@client, @reminder], :html => {:class => "form-horizontal"} do |c| %>
+<%= link_to "Назад", all_reminders_path(:history_action => "reminders"), :class => "iframe-link" %>
+<%= form_for @reminder, :url => {:controller => "all_reminders", :action => @reminder.new_record? ? "create" : "update"}, :html => {:class => "form-horizontal"} do |c| %>
   <div class="pull-left">
   <div class="control-group">
     <%= c.label "Описание:", :class => "control-label", :for => "inputName" %>
@@ -11,10 +11,11 @@
   <div class="control-group">
     <%= c.label "Время напоминания:", :class => "control-label", :for => "inputScheduledTime" %>
     <div class="controls">
-      <%= c.text_field :scheduled_time, :id => "inputScheduledTime", :value => (Time.now + 3.hours).strftime("%Y-%m-%d %H:00") %>
+      <%= c.text_field :scheduled_time, :id => "inputScheduledTime", :value => (@reminder.scheduled_time.strftime("%Y-%m-%d %H:%M") || (Time.now + 3.hours).strftime("%Y-%m-%d %H:00")) %>
     </div>
   </div>
 </div>
+<%= hidden_field_tag "reminder[showed]", false %>
 <div class="control-group unfloated">
   <div class="controls">
     <%= c.submit :class => "btn btn-primary btn-large"%>

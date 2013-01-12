@@ -100,7 +100,7 @@ $(document).ready(function(){
   })
 
   function reminderTimer(){
-    setInterval(updateReminder, 3000);
+    setInterval(updateReminder, 120000);
   };
 
   function updateReminder(){
@@ -108,9 +108,43 @@ $(document).ready(function(){
       beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
       url: "/all_reminders",
       success: function(data){
-        console.log(data);
+        var past_count = $("#past-count").text();
+        var today_count = $("#today-count").text();
+        if(past_count != data.past_count){
+          $("#past-count").text(data.past_count);
+        }
+        if(today_count != data.today_count){
+          $("#today-count").text(data.today_count);
+        }
+        if(data.messages != ""){
+          var answer = confirm(data.messages);
+          if(answer){
+            $.ajax({
+              type: "POST",
+              url: "/all_reminders/update_viewed",
+              data: {ids: data.past_ids},
+              dataType: "json"
+            })
+          }
+        }
       },
       dataType: "json"
     });
   }
+
+  $(".label-important.reminder").click(function(){
+    top.location = "/all_reminders?type=past_reminders"
+  })
+
+  $(".label-info.reminder").click(function(){
+    top.location = "/all_reminders?type=today_reminders"
+  })
+
+  $(".label-warning.reminder").click(function(){
+    top.location = "/all_reminders?type=tomorrow_reminders"
+  })
+
+  $(".label-success.reminder").click(function(){
+    top.location = "/all_reminders?type=future_reminders"
+  })
 })

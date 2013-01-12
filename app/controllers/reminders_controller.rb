@@ -4,7 +4,7 @@ class RemindersController < ApplicationController
   layout "history"
 
   def index
-    @reminders = @client.reminders.unscoped.order("reminders.closed DESC, reminders.updated_at DESC, reminders.scheduled_time DESC")
+    @reminders = @client.reminders.order("reminders.closed DESC, reminders.updated_at DESC, reminders.scheduled_time DESC")
   end
 
   def new

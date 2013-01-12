@@ -1,12 +1,15 @@
-<table class="table table-striped table-condensed table-bordered">
-  <tr class="text-info">
-    <td><strong>Дата создания</strong></td>
-    <td><strong>Дата напоминания</strong></td>
-    <td><strong>Описание</strong></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <% @reminders.reverse.each do |reminder| %>
-    <%= render :partial => "single_reminder", :locals => {:reminder => reminder} %>
+<div style="position:relative; top: 50px;">
+  <table class="table table-striped table-condensed table-bordered">
+    <tr class="text-info">
+      <td><strong>Выполнено</strong></td>
+      <td><strong>Дата напоминания</strong></td>
+      <td><strong>Клиент</strong></td>
+      <td><strong>Описание</strong></td>
+      <td><strong>Дата создания</strong></td>
+      <td></td>
+    </tr>
+    <% @reminders.reverse.each do |reminder| %>
+      <%= render :partial => "single_reminder", :locals => {:reminder => reminder} %>
   <% end %>
-</table>
+  </table>
+</div>
