@@ -49,24 +49,26 @@
             <%= hidden_field "", :by_all, :value => true %>
             <% end %>
         </li>
+        <li>
+          <span class="label label-important reminder" title="Прошедшие">
+            <div id="past-count" class="reminder-count"><%= past_reminders_count %></div>
+          </span>
+          <span class="label label-info reminder reminder-pull-left" title='Сегодня'>
+            <div id="today-count" class="reminder-count"><%= today_reminders_count %></div>
+          </span>
+          <% if params[:controller] == "all_reminders" && params[:action] == "index" %>
+            <span class="label label-warning reminder" title="На завтра">
+            <div id="tomorrow-count" class="reminder-count"><%= @tomorrow_reminders.count %></div>
+          </span>
+          <span class="label label-success reminder reminder-pull-left" title='Все невыполненные'>
+            <div id="future-count" class="reminder-count"><%= @future_reminders.count %></div>
+          </span>
+          <% end %>
+        </li>
       </ul>
 
     </div>
   </div>
-<span class="label label-important reminder" title="Прошедшие">
-  <div id="past-count" class="reminder-count"><%= past_reminders_count %></div>
-</span>
-<span class="label label-info reminder reminder-pull-left" title='Сегодня'>
-  <div id="today-count" class="reminder-count"><%= today_reminders_count %></div>
-</span>
-<% if params[:controller] == "all_reminders" && params[:action] == "index" %>
-<span class="label label-warning reminder" title="На завтра">
-  <div id="tomorrow-count" class="reminder-count"><%= @tomorrow_reminders.count %></div>
-</span>
-<span class="label label-success reminder reminder-pull-left" title='Все невыполненные'>
-  <div id="future-count" class="reminder-count"><%= @future_reminders.count %></div>
-</span>
-<% end %>
 
 
 </div>
