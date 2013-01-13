@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 ruby "1.9.3"
-gem 'rails', '3.2.8'
-gem 'pg'
-gem 'yaml_db'
+gem 'rails', '3.2.11'
+gem 'pg', "0.14.1"
+gem 'yaml_db', "0.2.3"
 gem 'will_paginate', '~> 3.0'
 
 # Bundle edge Rails instead:
@@ -13,7 +13,7 @@ gem 'will_paginate', '~> 3.0'
 # Gems used only for assets and not required
 # in production environments by default.
 group :development do
-  gem 'debugger'
+  gem 'debugger', "1.2.2"
 end
 
 group :assets do
@@ -26,7 +26,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', "2.1.3"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
