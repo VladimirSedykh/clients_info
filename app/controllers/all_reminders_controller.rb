@@ -1,18 +1,9 @@
 class AllRemindersController < ApplicationController
   def index
-    db_time = Time.current.in_time_zone('EET')
-    @past_reminders = Reminder.not_closed.where("scheduled_time <= '#{db_time.strftime("%Y-%m-%d %H:%M:%S")}'")
-    @today_reminders = Reminder.not_closed.where("scheduled_time <= '#{db_time.strftime("%Y-%m-%d 23:59:59")}'")
+    calculate_main_reminders
     respond_to do |format|
       format.html do
-        @tomorrow_reminders = Reminder.not_closed.where(<<-EOS
-              scheduled_time >= '#{(db_time + 1.day).strftime("%Y-%m-%d 00:00:00")}' AND
-              scheduled_time <= '#{(db_time + 1.day).strftime("%Y-%m-%d 23:59:59")}'
-            EOS
-          )
-        @future_reminders = Reminder.not_closed
-
-
+        calculate_additional_reminders
         @reminders =
         if ["past_reminders", "today_reminders", "future_reminders", "tomorrow_reminders"].include?(params[:type])
           instance_variable_get("@" + params[:type])
@@ -57,7 +48,9 @@ class AllRemindersController < ApplicationController
       format.json do
         used = params[:closed] == "checked"
         @reminder.try(:update_attributes, {:closed => used, :showed => used})
-        render :json=> {}
+        calculate_main_reminders
+        calculate_additional_reminders
+        render :json=> {:past_count => @past_reminders.count, :today_count => @today_reminders.count, :tomorrow_count => @tomorrow_reminders.count, :future_count => @future_reminders.count}
       end
     end
   end
@@ -65,5 +58,23 @@ class AllRemindersController < ApplicationController
   def destroy
     @reminder = Reminder.find(params[:id]).destroy
     redirect_to all_reminders_path
+  end
+
+  private
+
+  def calculate_main_reminders
+    db_time = Time.current.in_time_zone('EET')
+    @past_reminders = Reminder.not_closed.where("scheduled_time <= '#{db_time.strftime("%Y-%m-%d %H:%M:%S")}'")
+    @today_reminders = Reminder.not_closed.where("scheduled_time <= '#{db_time.strftime("%Y-%m-%d 23:59:59")}'")
+  end
+
+  def calculate_additional_reminders
+    db_time = Time.current.in_time_zone('EET')
+    @tomorrow_reminders = Reminder.not_closed.where(<<-EOS
+              scheduled_time >= '#{(db_time + 1.day).strftime("%Y-%m-%d 00:00:00")}' AND
+              scheduled_time <= '#{(db_time + 1.day).strftime("%Y-%m-%d 23:59:59")}'
+                                                    EOS
+                                                   )
+    @future_reminders = Reminder.not_closed
   end
 end

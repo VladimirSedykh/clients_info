@@ -95,6 +95,26 @@ $(document).ready(function(){
       beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
       url: url,
       data: { closed: $(this).attr('checked'), id: $(this).val() },
+      success: function(data){
+        if (url.match(/all_reminders/)){
+          var past_count = $("#past-count").text();
+          var today_count = $("#today-count").text();
+          var tomorrow_count = $("#tomorrow-count").text();
+          var future_count = $("#future-count").text();
+          if(past_count != data.past_count){
+            $("#past-count").text(data.past_count);
+          }
+          if(today_count != data.today_count){
+            $("#today-count").text(data.today_count);
+          }
+          if(future_count != data.future_count){
+            $("#future-count").text(data.future_count);
+          }
+          if(today_count != data.today_count){
+            $("#tomorrow-count").text(data.tomorrow_count);
+          }
+        }
+      },
       dataType: "json"
     });
   })
