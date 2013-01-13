@@ -209,10 +209,6 @@ ul.nav {
   padding: 2px 0px;
 }
 
-.label-important.reminder {
-  margin-left: 3px;
-}
-
 .label-important.reminder, .label-info.reminder, .label-warning.reminder, .label-success.reminder {
   text-align: center;
   padding: 5px;
@@ -221,6 +217,15 @@ ul.nav {
   height: 20px;
   margin-top: 4px;
 }
+
+.label-important.reminder {
+  margin-left: 3px;
+}
+
+.label-warning.reminder {
+  margin-left: -3px;
+}
+
 
 .reminder-pull-left {
   margin-left: -3px;
