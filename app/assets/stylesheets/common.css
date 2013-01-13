@@ -216,6 +216,7 @@ ul.nav {
   cursor: pointer;
   height: 20px;
   margin-top: 4px;
+  z-index: 2000;
 }
 
 .label-important.reminder {
@@ -235,4 +236,12 @@ ul.nav {
   margin: 14px 0 !important;
   position: relative !important;
   top: 5px !important;
+}
+
+/* Fix titles */
+
+article, aside, canvas, details,
+figcaption, figure, footer, header,
+hgroup, nav, section, summary, video {
+    display: block;
 }
