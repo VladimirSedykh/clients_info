@@ -1,5 +1,8 @@
 <tr class="table-block">
   <td class="clickable-cell" style="font-size: 15px;"> <%= link_to client.name, "#", :attr => client.id, :class => "iframe-link" %></td>
+  <% unless session[:group] %>
+    <td> <%= Client::GROUPS[client.role] %></td>
+  <% end %>
   <td> <%= client.short_contacts %> </td>
   <td> <%= client.state %> </td>
   <td> <%= client.address %> </td>

@@ -13,7 +13,7 @@ gem 'will_paginate', '~> 3.0'
 # Gems used only for assets and not required
 # in production environments by default.
 group :development do
-  #gem 'debugger', "1.2.2"
+  gem 'debugger', "1.2.2"
   gem 'taps', :require => false
   gem 'sqlite3'
 end

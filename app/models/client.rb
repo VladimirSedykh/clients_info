@@ -26,13 +26,13 @@ class Client < ActiveRecord::Base
     update_attributes(:short_contacts => data)
   end
 
-  def self.search(params, group)
-    return Client.by_group(group).by_all_conditions(params[:name]).group("clients.id") if params[:by_all] == "true"
+  def self.search(params)
+    return Client.by_all_conditions(params[:name]).group("clients.id") if params[:by_all] == "true"
     clients =
       if params[:client].present?
-        Client.by_group(group).where(Client.search_params(params, :client))
+        Client.where(Client.search_params(params, :client))
       else
-        Client.by_group(group)
+        Client.where("")
       end
 
     conditions = Client.search_params(params, :contact)
@@ -53,6 +53,7 @@ class Client < ActiveRecord::Base
   private
 
   def self.search_params(params, param)
+    return nil unless params[param].present?
     search_params = params[param].delete_if{|k,v| v.blank?}
     conditions = []
     search_params.each do |key, value|
