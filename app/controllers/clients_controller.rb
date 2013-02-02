@@ -15,6 +15,8 @@ class ClientsController < ApplicationController
       params[:last_action] = "search"
       session[:group] == "all"
       @clients = Client.search(session[:params] || params).order(order_params).paginate(:page => params[:page])
+    elsif session[:group] == "all"
+      @clients = Client.order(order_params).paginate(:page => params[:page])
     else
       params[:last_action] = "index"
       @clients = Client.by_group(current_group).order(order_params).paginate(:page => params[:page])
