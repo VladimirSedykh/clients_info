@@ -4,18 +4,20 @@ class ApplicationController < ActionController::Base
   helper_method :current_group, :search_action?
 
   def set_curretn_group
-    if session[:group].blank? && !search_action?
-      session[:group] = "client"
-    else
-      session[:group] = params[:group]
+    if !request.xhr?
+      if session[:group].blank?
+        session[:group] = "client"
+      elsif params[:group].present?
+        session[:group] = params[:group]
+      elsif params[:controller] == "clients" && params[:action] == "search"
+        session[:group] = "search"
+      end
     end
   end
 
   def current_group
-    return nil if search_action?
     session[:group]
   end
-
 
   def detect_frame
     unless params[:main]

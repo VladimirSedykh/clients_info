@@ -13,11 +13,11 @@
     <div class="nav-collapse collapse">
       <ul class="nav">
         <li class='main-menu-item'>
-          <% if session[:group] %>
-            <%= link_to current_group_name, root_path %>
-          <% else %>
-            <span>Поиск</span>
-          <% end %>
+            <% if session[:group] == "search" %>
+              <span>Поиск</span>
+            <% else %>
+              <%= link_to current_group_name, root_path %>
+            <% end %>
           </li>
         <li class="divider-vertical"></li>
           <% if params[:controller] == "clients" && params[:action] != "new" %>
