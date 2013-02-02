@@ -11,7 +11,7 @@ class ClientsController < ApplicationController
     @contacts = Array.new(2) { @client.contacts.build }
     if params[:last_action] == "search"
       params[:last_action] = "search"
-      @clients = Client.search(params).order(order_params).paginate(:page => params[:page])
+      @clients = Client.search(session[:params] || params).order(order_params).paginate(:page => params[:page])
     else
       params[:last_action] = "index"
       @clients = Client.by_group(current_group).order(order_params).paginate(:page => params[:page])
@@ -34,10 +34,14 @@ class ClientsController < ApplicationController
     #search_params = self.request.get? ? session[:params] : params
     #@clients = Client.search(search_params).order(order_params).paginate(:page => params[:page])
     #render :controller => :pages, :action => :index
-
     session[:group] == nil
+    session[:params] = params
     params.merge!({:last_action => "search", :role => ""})
-    redirect_to(root_path(params), {:TARGET => "_top"})
+    if params[:by_all].present?
+      redirect_to(root_path(params), {:TARGET => "_top"})
+    else
+      redirect_to(clients_path(params), {:TARGET => "_top"})
+    end
   end
 
   def show

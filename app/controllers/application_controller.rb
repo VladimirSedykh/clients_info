@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_group, :search_action?
 
   def set_curretn_group
-    if session[:group].blank? && !search_action? && main_page?
+    if session[:group].blank? && !search_action?
       session[:group] = "client"
     else
       session[:group] = params[:group]

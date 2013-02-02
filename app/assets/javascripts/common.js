@@ -33,7 +33,7 @@ $(document).ready(function(){
     $(this).parent().fadeOut("fast");
   });
 
-  $("#clean_search_form").live("click", function(){$("#search_form.modal-body").find("input, select, textarea").not(".btn").val("")});
+  $("#clean_search_form").live("click", function(){$("#search_form").find("input, select, textarea").not(".btn").val("")});
 
   $(".clickable-cell").click(function(){
     var link = $(this).find('.iframe-link');
