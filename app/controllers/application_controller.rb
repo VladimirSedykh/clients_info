@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
       elsif params[:group].present?
         session[:group] = params[:group]
       elsif params[:controller] == "clients" && params[:action] == "search"
-        session[:group] = "search"
+        session[:group] = "all"
       end
     end
   end

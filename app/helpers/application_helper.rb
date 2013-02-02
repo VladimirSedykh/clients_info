@@ -67,4 +67,12 @@ module ApplicationHelper
   def scheduled_time_value
     @reminder.scheduled_time.try(:strftime, "%Y-%m-%d %H:%M") || (Time.now + 3.hours).strftime("%Y-%m-%d %H:00")
   end
+
+  def group_count(group)
+    if group == "all"
+      Client.count
+    else
+      Client.by_group(group).count
+    end
+  end
 end

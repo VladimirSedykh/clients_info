@@ -8,7 +8,7 @@ class Client < ActiveRecord::Base
   validates_presence_of :name
   validate :check_name
 
-  GROUPS = { "client" => "Клиенты", "provider" => "Поставщики", "partner" => "Партнеры", "potential" => "Потенциальные", "search" => "Поиск" }
+  GROUPS = { "client" => "Клиенты", "provider" => "Поставщики", "partner" => "Партнеры", "potential" => "Потенциальные", "all" => "Все" }
   SEARCHABLE_FIELDS = %w[name address state activity description]
   scope :by_group, lambda {|group| where(:role => group)}
   scope :by_all_conditions, lambda {|name| joins("LEFT JOIN contacts ON clients.id = contacts.client_id").where(Client.by_all_fields(name))}
