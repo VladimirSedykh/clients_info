@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130111194613) do
+ActiveRecord::Schema.define(:version => 20130202193512) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20130111194613) do
   end
 
   create_table "reminders", :force => true do |t|
-    t.string   "description"
+    t.text     "description"
     t.integer  "client_id"
     t.boolean  "closed"
     t.boolean  "showed"
