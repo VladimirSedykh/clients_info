@@ -47,7 +47,7 @@ module ApplicationHelper
   end
 
   def short_date(date)
-    date.strftime("%d %b, %H:%M")
+    date.strftime("%d %b, %H:%M") if date.present?
   end
 
   def history_active(*name)
